@@ -1,0 +1,4 @@
+services:
+#    webcaja.example:
+#        class: WebcajaBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

@@ -1,0 +1,77 @@
+{% extends 'WebcajaBundle:BackEnd:index.html.twig' %}
+
+{% block menuslide %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('webcaja_homepage_admin') }}">总览 <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">报告</a></li>
+        <li><a href="#">分析</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('user_index') }}">用户管理</a></li>
+        <li><a href="{{ path('category_index') }}">分类管理</a></li>
+        <li class="active"><a href="{{ path('product_index') }}">产品管理</a></li>
+        <li><a href="{{ path('orderinfo_index') }}">订单管理</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1 class="sub-header">产品查看</h1>
+    <br>
+    <table class="table-bordered table-striped table-hover" width="800" height="200">
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <td>{{ product.id }}</td>
+            </tr>
+            <tr>
+                <th>产品名</th>
+                <td>{{ product.name }}</td>
+            </tr>
+            <tr>
+                <th>产品名西语</th>
+                <td>{{ product.nameEs }}</td>
+            </tr>
+            <tr>
+                <th>每包个数</th>
+                <td>{{ product.unit }}</td>
+            </tr>
+            <tr>
+                <th>产品编号</th>
+                <td>{{ product.code }}</td>
+            </tr>
+            <tr>
+                <th>库存</th>
+                <td>{{ product.stock }}</td>
+            </tr>
+            <tr>
+                <th>单价</th>
+                <td>{{ product.price }}</td>
+            </tr>
+            <tr>
+                <th>产品描述</th>
+                <td>{{ product.description }}</td>
+            </tr>
+            <tr>
+                <th>照片</th>
+                <td>{{ product.foto }}</td>
+            </tr>
+            <tr>
+                <th>所属分类</th>
+                <td>{{ product.categoryName }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br><br>
+    <ul>
+        <li>
+            <a href="{{ path('product_edit', { 'id': product.id }) }}" class="button button-rounded">修改</a>
+            <a href="{{ path('product_index') }}" class="button button-rounded">返回产品列表</a>
+        </li>
+        <br>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" class="button button-border button-rounded button-primary" value="删除">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'WebcajaBundle:BackEnd:index.html.twig' %}
+
+{% block menuslide %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('webcaja_homepage_admin') }}">总览 <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">报告</a></li>
+        <li><a href="#">分析</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li class="active"><a href="{{ path('user_index') }}">用户管理</a></li>
+        <li><a href="{{ path('category_index') }}">分类管理</a></li>
+        <li><a href="{{ path('product_index') }}">产品管理</a></li>
+        <li><a href="{{ path('orderinfo_index') }}">订单管理</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1 class="sub-header">User</h1>
+    <br>
+    <table class="table-bordered table-striped table-hover" width="400" height="200">
+        <tbody>
+        <tr>
+            <th>ID</th>
+            <td>{{ user.id }}</td>
+        </tr>
+        <tr>
+            <th>用户名</th>
+            <td>{{ user.username }}</td>
+        </tr>
+        <tr>
+            <th>邮箱</th>
+            <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+            <th>可使用</th>
+            <td>{{ user.enabled }}</td>
+        </tr>
+        <tr>
+            <th>最后登录</th>
+            <td>{{ user.lastLogin|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>用户规则</th>
+            <td>
+                <ul class="list">
+                    {%for role in user.roles %}
+                        <li>{{role}}</li>
+                    {%endfor%}
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br><br>
+    <ul>
+        <li>
+            <a href="{{ path('user_edit', { 'id': user.id }) }}" class="button button-rounded">修改</a>
+            <a href="{{ path('user_index') }}" class="button button-rounded">返回用户列表</a>
+        </li>
+        <br>
+        <li>
+            {{ form_start(delete_form) }}
+               <input type="submit" class="button button-border button-rounded button-primary" value="删除">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,39 @@
+webcaja_user:
+    resource: "@WebcajaBundle/Resources/config/routing/user.yml"
+    prefix:   /admin/user
+
+webcaja_homepage:
+    path:     /
+    defaults: { _controller: WebcajaBundle:Default:index }
+
+webcaja_product:
+    resource: "@WebcajaBundle/Resources/config/routing/product.yml"
+    prefix:   /admin/product
+
+webcaja_category:
+    resource: "@WebcajaBundle/Resources/config/routing/category.yml"
+    prefix:   /admin/category
+
+webcaja_homepage_admin:
+    path:     /admin
+    defaults: { _controller: WebcajaBundle:Default:backEnd }
+
+webcaja_orderinfo:
+    resource: "@WebcajaBundle/Resources/config/routing/orderinfo.yml"
+    prefix:   /admin/orderinfo
+
+webcaja_orderitem:
+    resource: "@WebcajaBundle/Resources/config/routing/orderitem.yml"
+    prefix:   /admin/orderitem
+
+webcaja_categoryList:
+    path:     /categoryList
+    defaults: { _controller: WebcajaBundle:Default:categoryList }
+
+webcaja_productList:
+    path:     /productList/{id}
+    defaults: { _controller: WebcajaBundle:Default:productList }
+
+webcaja_carrito:
+    path:     /carrito
+    defaults: { _controller: WebcajaBundle:Default:carrito }

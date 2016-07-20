@@ -1,0 +1,69 @@
+{% extends 'WebcajaBundle:BackEnd:index.html.twig' %}
+
+{% block menuslide %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('webcaja_homepage_admin') }}">总览 <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">报告</a></li>
+        <li><a href="#">分析</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('user_index') }}">用户管理</a></li>
+        <li><a href="{{ path('category_index') }}">分类管理</a></li>
+        <li class="active"><a href="{{ path('product_index') }}">产品管理</a></li>
+        <li><a href="{{ path('orderinfo_index') }}">订单管理</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1 class="sub-header">产品列表</h1>
+    <br>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>产品名</th>
+                <th>产品名西语</th>
+                <th>每包个数</th>
+                <th>产品编码</th>
+                <th>库存</th>
+                <th>单价</th>
+                <th>产品描述</th>
+                <th>图片</th>
+                <th>所属分类</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td><a href="{{ path('product_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.nameEs }}</td>
+                <td>{{ product.unit }}</td>
+                <td>{{ product.code }}</td>
+                <td>{{ product.stock }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.description }}</td>
+                <td><img src="{{ product.foto }}" width="100" height="50"></td>
+                <td>{{ product.categoryName }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('product_show', { 'id': product.id }) }}">查看</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('product_edit', { 'id': product.id }) }}">修改</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('product_new') }}" class="button button-rounded">创建新产品</a>
+        </li>
+    </ul>
+{% endblock %}

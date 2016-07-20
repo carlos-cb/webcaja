@@ -1,0 +1,24 @@
+orderitem_index:
+    path:     /{id}
+    defaults: { _controller: "WebcajaBundle:OrderItem:index" }
+    methods:  GET
+
+orderitem_show:
+    path:     /{id}/show
+    defaults: { _controller: "WebcajaBundle:OrderItem:show" }
+    methods:  GET
+
+orderitem_new:
+    path:     /new
+    defaults: { _controller: "WebcajaBundle:OrderItem:new" }
+    methods:  [GET, POST]
+
+orderitem_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "WebcajaBundle:OrderItem:edit" }
+    methods:  [GET, POST]
+
+orderitem_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "WebcajaBundle:OrderItem:delete" }
+    methods:  DELETE

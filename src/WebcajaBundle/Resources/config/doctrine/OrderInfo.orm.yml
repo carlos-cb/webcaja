@@ -1,0 +1,54 @@
+WebcajaBundle\Entity\OrderInfo:
+    type: entity
+    table: null
+    repositoryClass: WebcajaBundle\Repository\OrderInfoRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        orderDate:
+            type: datetime
+        goodsFee:
+            type: float
+        totalPrice:
+            type: float
+        shipFee:
+            type: float
+        payType:
+            type: string
+            length: 255
+        receiverName:
+            type: string
+            length: 255
+        receiverPhone:
+            type: string
+            length: 255
+        receiverAdress:
+            type: string
+            length: 255
+        receiverCity:
+            type: string
+            length: 255
+        receiverProvince:
+            type: string
+            length: 255
+        receiverPostcode:
+            type: string
+            length: 255
+        isConfirmed:
+            type: boolean
+        isSended:
+            type: boolean
+        isOver:
+            type: boolean
+        state:
+            type: string
+            length: 255
+    oneToMany:
+        orderItems:
+            targetEntity: OrderItem
+            mappedBy: orderInfo
+    lifecycleCallbacks: {  }

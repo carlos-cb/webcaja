@@ -1,0 +1,23 @@
+WebcajaBundle\Entity\Category:
+    type: entity
+    table: null
+    repositoryClass: WebcajaBundle\Repository\CategoryRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        nameEs:
+            type: string
+            length: 255
+            column: name_es
+    oneToMany:
+        products:
+            targetEntity: Product
+            mappedBy: category
+    lifecycleCallbacks: {  }

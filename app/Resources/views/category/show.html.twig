@@ -1,0 +1,49 @@
+{% extends 'WebcajaBundle:BackEnd:index.html.twig' %}
+
+{% block menuslide %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('webcaja_homepage_admin') }}">总览 <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">报告</a></li>
+        <li><a href="#">分析</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('user_index') }}">用户管理</a></li>
+        <li class="active"><a href="{{ path('category_index') }}">分类管理</a></li>
+        <li><a href="{{ path('product_index') }}">产品管理</a></li>
+        <li><a href="{{ path('orderinfo_index') }}">订单管理</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1 class="sub-header">产品分类查看</h1>
+    <br>
+    <table class="table-bordered table-striped table-hover" width="400" height="200">
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <td>{{ category.id }}</td>
+            </tr>
+            <tr>
+                <th>产品分类名</th>
+                <td>{{ category.name }}</td>
+            </tr>
+            <tr>
+                <th>产品分类西语名</th>
+                <td>{{ category.nameEs }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br><br>
+    <ul>
+        <li>
+            <a href="{{ path('category_edit', { 'id': category.id }) }}" class="button button-rounded">修改</a>
+            <a href="{{ path('category_index') }}" class="button button-rounded">返回产品分类列表</a>
+        </li>
+        <br>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" class="button button-border button-rounded button-primary" value="删除">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'WebcajaBundle:BackEnd:index.html.twig' %}
+
+{% block menuslide %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('webcaja_homepage_admin') }}">总览 <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">报告</a></li>
+        <li><a href="#">分析</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li class="active"><a href="{{ path('user_index') }}">用户管理</a></li>
+        <li><a href="{{ path('category_index') }}">分类管理</a></li>
+        <li><a href="{{ path('product_index') }}">产品管理</a></li>
+        <li><a href="{{ path('orderinfo_index') }}">订单管理</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1 class="sub-header">用户管理</h1>
+    <br>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>用户名</th>
+            <th>邮件</th>
+            <th>可用</th>
+            <th>最后登录</th>
+            <th>上锁</th>
+            <th>用户组</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.username }}</a></td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.enabled }}</td>
+                <td>{% if user.lastLogin %}{{ user.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ user.locked }}</td>
+                <td>
+                    <ul class="list">
+                        {%for role in user.roles %}
+                            <li>{{role}}</li>
+                        {%endfor%}
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('user_show', { 'id': user.id }) }}">查看</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('user_edit', { 'id': user.id }) }}">修改</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

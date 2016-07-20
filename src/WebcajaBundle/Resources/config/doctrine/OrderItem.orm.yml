@@ -1,0 +1,38 @@
+WebcajaBundle\Entity\OrderItem:
+    type: entity
+    table: null
+    repositoryClass: WebcajaBundle\Repository\OrderItemRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        unitPrice:
+            type: float
+        unit:
+            type: integer
+        quantity:
+            type: integer
+        name:
+            type: string
+            length: 255
+        nameEs:
+            type: string
+            length: 255
+        codigo:
+            type: string
+            length: 255
+        description:
+            type: string
+            length: 255
+            nullable: true
+    manyToOne:
+        orderInfo:
+            targetEntity: OrderInfo
+            inversedBy: orderItems
+            joinColumn:
+                name: orderInfo_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

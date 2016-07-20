@@ -1,0 +1,11 @@
+WebcajaBundle\Entity\User:
+    type: entity
+    table: null
+    repositoryClass: WebcajaBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    lifecycleCallbacks: {  }
