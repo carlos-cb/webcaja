@@ -11,7 +11,7 @@
     <br>
     <ul>
         {% for product in products %}
-            <li>{{ product.name }}</li><button>+</button><button>-</button>
+            <li>{{ product.name }}</li><a href="{{ path('webcaja_addToCarrito', {'id': product.id }) }}">购买</a>
         {% endfor %}
     </ul>
 {% endblock %}

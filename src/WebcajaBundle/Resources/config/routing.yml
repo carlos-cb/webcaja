@@ -37,3 +37,11 @@ webcaja_productList:
 webcaja_carrito:
     path:     /carrito
     defaults: { _controller: WebcajaBundle:Default:carrito }
+
+webcaja_addToCarrito:
+    path:     /addToCarrito/{id}
+    defaults: { _controller: WebcajaBundle:Default:addToCarrito }
+
+webcaja_clearCarrito:
+    path:     /clearCarrito
+    defaults: { _controller: WebcajaBundle:Default:clearCarrito }
