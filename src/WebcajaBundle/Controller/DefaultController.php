@@ -3,8 +3,7 @@
 namespace WebcajaBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Session\Session;
-use WebcajaBundle\Entity\Product;
+
 
 class DefaultController extends Controller
 {
@@ -39,38 +38,6 @@ class DefaultController extends Controller
         return $this->render('WebcajaBundle:Default:productList.html.twig', array(
             'products' => $products,
         ));
-    }
-    
-    public function carritoAction()
-    {
-        $session = new Session();
-        $cart = $session->get('cartElements');
-
-        return $this->render('WebcajaBundle:Default:carrito.html.twig', array(
-            'carts' => $cart,
-        ));
-    }
-
-    public function addToCarritoAction(Product $product)
-    {
-        $session = new Session();
-        if(!$session->get('cartElements')){
-            $session->set('cartElements', array());
-        }
-
-        $cart = $session->get('cartElements');
-        array_push($cart, $product);
-        $session->set('cartElements', $cart);
-
-        return $this->redirectToRoute('webcaja_carrito');
-    }
-
-    public function clearCarritoAction()
-    {
-        $session = new Session();
-        $cart = $session->clear();
-
-        return $this->redirectToRoute('webcaja_carrito');
     }
 
 }
