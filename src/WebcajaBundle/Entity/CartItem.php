@@ -5,9 +5,9 @@ namespace WebcajaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * OrderItem
+ * CartItem
  */
-class OrderItem
+class CartItem
 {
     /**
      * @var int
@@ -22,12 +22,12 @@ class OrderItem
     /**
      * @var int
      */
-    private $unit;
+    private $quantity;
 
     /**
      * @var int
      */
-    private $quantity;
+    private $unit;
 
     /**
      * @var string
@@ -37,17 +37,12 @@ class OrderItem
     /**
      * @var string
      */
-    private $nameEs;
-
-    /**
-     * @var string
-     */
     private $codigo;
 
     /**
-     * @var string
+     * @var float
      */
-    private $description;
+    private $price;
 
 
     /**
@@ -64,7 +59,7 @@ class OrderItem
      * Set unitPrice
      *
      * @param float $unitPrice
-     * @return OrderItem
+     * @return CartItem
      */
     public function setUnitPrice($unitPrice)
     {
@@ -84,33 +79,10 @@ class OrderItem
     }
 
     /**
-     * Set unit
-     *
-     * @param integer $unit
-     * @return OrderItem
-     */
-    public function setUnit($unit)
-    {
-        $this->unit = $unit;
-
-        return $this;
-    }
-
-    /**
-     * Get unit
-     *
-     * @return integer 
-     */
-    public function getUnit()
-    {
-        return $this->unit;
-    }
-
-    /**
      * Set quantity
      *
      * @param integer $quantity
-     * @return OrderItem
+     * @return CartItem
      */
     public function setQuantity($quantity)
     {
@@ -130,10 +102,33 @@ class OrderItem
     }
 
     /**
+     * Set unit
+     *
+     * @param integer $unit
+     * @return CartItem
+     */
+    public function setUnit($unit)
+    {
+        $this->unit = $unit;
+
+        return $this;
+    }
+
+    /**
+     * Get unit
+     *
+     * @return integer 
+     */
+    public function getUnit()
+    {
+        return $this->unit;
+    }
+
+    /**
      * Set name
      *
      * @param string $name
-     * @return OrderItem
+     * @return CartItem
      */
     public function setName($name)
     {
@@ -153,33 +148,10 @@ class OrderItem
     }
 
     /**
-     * Set nameEs
-     *
-     * @param string $nameEs
-     * @return OrderItem
-     */
-    public function setNameEs($nameEs)
-    {
-        $this->nameEs = $nameEs;
-
-        return $this;
-    }
-
-    /**
-     * Get nameEs
-     *
-     * @return string 
-     */
-    public function getNameEs()
-    {
-        return $this->nameEs;
-    }
-
-    /**
      * Set codigo
      *
      * @param string $codigo
-     * @return OrderItem
+     * @return CartItem
      */
     public function setCodigo($codigo)
     {
@@ -199,58 +171,54 @@ class OrderItem
     }
 
     /**
-     * Set description
+     * Set price
      *
-     * @param string $description
-     * @return OrderItem
+     * @param float $price
+     * @return CartItem
      */
-    public function setDescription($description)
+    public function setPrice($price)
     {
-        $this->description = $description;
+        $this->price = $price;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Get price
      *
-     * @return string 
+     * @return float 
      */
-    public function getDescription()
+    public function getPrice()
     {
-        return $this->description;
-    }
-
-    public function __toString() {
-        return strval($this->id);
+        return $this->price;
     }
     /**
-     * @var \WebcajaBundle\Entity\OrderInfo
+     * @var \WebcajaBundle\Entity\Cart
      */
-    private $orderInfo;
+    private $cart;
 
 
     /**
-     * Set orderInfo
+     * Set cart
      *
-     * @param \WebcajaBundle\Entity\OrderInfo $orderInfo
-     * @return OrderItem
+     * @param \WebcajaBundle\Entity\Cart $cart
+     * @return CartItem
      */
-    public function setOrderInfo(\WebcajaBundle\Entity\OrderInfo $orderInfo = null)
+    public function setCart(\WebcajaBundle\Entity\Cart $cart = null)
     {
-        $this->orderInfo = $orderInfo;
+        $this->cart = $cart;
 
         return $this;
     }
 
     /**
-     * Get orderInfo
+     * Get cart
      *
-     * @return \WebcajaBundle\Entity\OrderInfo 
+     * @return \WebcajaBundle\Entity\Cart 
      */
-    public function getOrderInfo()
+    public function getCart()
     {
-        return $this->orderInfo;
+        return $this->cart;
     }
     /**
      * @var integer
@@ -262,7 +230,7 @@ class OrderItem
      * Set productId
      *
      * @param integer $productId
-     * @return OrderItem
+     * @return CartItem
      */
     public function setProductId($productId)
     {

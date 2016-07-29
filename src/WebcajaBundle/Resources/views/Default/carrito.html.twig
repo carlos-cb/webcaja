@@ -8,15 +8,15 @@
         <li><a href="{{ path('webcaja_homepage') }}">搜索</a></li>
         <li><a href="{{ path('webcaja_carrito') }}">购物车</a></li>
         <li><a href="{{ path('webcaja_clearCarrito') }}">清空购物车</a></li>
-        <li><a href="{{ path('webcaja_clearCarrito') }}">确认订单</a></li>
+        <li><button class="jiezhang">结账</button></li>
     </ul>
     <div id="shangpin">
     {% for productsEnCarrito in productsEnCarritos %}
         <hr class="featurette-divider">
         <ul>
-            <li>产品：{{ productsEnCarrito.name }}</li>
+            <li>产品：<span id="name">{{ productsEnCarrito.name }}</span></li>
             <li>单位：<span id="unit">{{ productsEnCarrito.unit }}</span>件/包</li>
-            <li>编号：{{ productsEnCarrito.code }}</li>
+            <li>编号：<span id="codigo">{{ productsEnCarrito.code }}</span></li>
             <li>单价：<span id="price">{{ productsEnCarrito.price }}</span> €/件</li>
             <li>数量：<input class="text_box" name="" type="text" value="1" />包</li>
             <input class="min" type="button" value="-"/>

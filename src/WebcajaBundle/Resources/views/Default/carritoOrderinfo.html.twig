@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>web叫货系统</h1>
+    <ul>
+        <li><a href="{{ path('webcaja_homepage') }}">首页</a></li>
+    </ul>
+    <h2>{{ p1 }}</h2>
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <br>
+        <input type="submit" class="button button-rounded" value="确认下单" />
+    {{ form_end(form) }}
+
+{% endblock %}

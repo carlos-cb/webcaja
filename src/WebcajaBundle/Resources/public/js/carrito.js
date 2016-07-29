@@ -33,3 +33,39 @@ $(function(){
     setHeji();
     setTotal();
 })
+
+
+$(document).ready(function(){
+    $(".jiezhang").click(function(){
+        var ggggg = $('#shangpin').find('ul');
+        var orderItems = new Array();
+        var total = parseFloat($("#total").text());
+        for(var k=0; k<ggggg.length; k++){
+            orderItems[k] = new Array();
+            orderItems[k]['name'] = $(ggggg[k]).find('#name').text();
+            orderItems[k]['codigo'] = $(ggggg[k]).find('#codigo').text();
+            orderItems[k]['unitprice'] = parseFloat($(ggggg[k]).find('#price').text());
+            orderItems[k]['unit'] = parseInt($(ggggg[k]).find('#unit').text());
+            orderItems[k]['quantity'] = parseInt($(ggggg[k]).find('.text_box').val());
+            orderItems[k]['heji'] = parseFloat($(ggggg[k]).find('#heji').text());
+        }
+        //$.session.set('orderItems', orderItems)
+        alert(total);
+        var test=1;
+        $.ajax({
+            type: 'POST',
+            url: "{{ path('webcaja_carritoOrderinfo') }}",
+            data: {val1:"1",val2:"2"},
+            success: function(data) {
+                alert (data);
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown)
+            {
+                alert('Error: ' +  errorThrown);
+            }
+        });
+    });
+});
+
+
+

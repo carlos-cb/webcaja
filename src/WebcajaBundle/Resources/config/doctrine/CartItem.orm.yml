@@ -1,7 +1,7 @@
-WebcajaBundle\Entity\OrderItem:
+WebcajaBundle\Entity\CartItem:
     type: entity
     table: null
-    repositoryClass: WebcajaBundle\Repository\OrderItemRepository
+    repositoryClass: WebcajaBundle\Repository\CartItemRepository
     id:
         id:
             type: integer
@@ -11,17 +11,13 @@ WebcajaBundle\Entity\OrderItem:
     fields:
         quantity:
             type: integer
-        description:
-            type: string
-            length: 255
-            nullable: true
         productId:
             type: integer
     manyToOne:
-        orderInfo:
-            targetEntity: OrderInfo
-            inversedBy: orderItems
+        cart:
+            targetEntity: Cart
+            inversedBy: cartItems
             joinColumn:
-                name: orderInfo_id
+                name: cart_id
                 referencedColumnName: id
     lifecycleCallbacks: {  }

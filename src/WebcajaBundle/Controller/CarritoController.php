@@ -49,4 +49,5 @@ class CarritoController extends Controller
 
         return $this->redirectToRoute('webcaja_carrito');
     }
+
 }

@@ -1,47 +1,25 @@
-{% extends 'WebcajaBundle:BackEnd:index.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block menuslide %}
-    <ul class="nav nav-sidebar">
-        <li><a href="{{ path('webcaja_homepage_admin') }}">总览 <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">报告</a></li>
-        <li><a href="#">分析</a></li>
-    </ul>
-    <ul class="nav nav-sidebar">
-        <li><a href="{{ path('user_index') }}">用户管理</a></li>
-        <li><a href="{{ path('category_index') }}">分类管理</a></li>
-        <li><a href="{{ path('product_index') }}">产品管理</a></li>
-        <li class="active"><a href="{{ path('orderinfo_index') }}">订单管理</a></li>
-    </ul>
-{% endblock %}
+{% block body %}
+    <h1>OrderItem list</h1>
 
-{% block content %}
-    <h1 class="sub-header">订单产品列表</h1>
-    <br>
-    <table class="table table-bordered table-striped table-hover">
+    <table>
         <thead>
             <tr>
-                <th>ID</th>
-                <th>产品名</th>
-                <th>产品名西语</th>
-                <th>产品编码</th>
-                <th>单价</th>
-                <th>每包个数</th>
-                <th>数量（包）</th>
-                <th>描述</th>
-                <th>操作</th>
+                <th>Id</th>
+                <th>Quantity</th>
+                <th>Description</th>
+                <th>Productid</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for orderItem in orderItems %}
             <tr>
                 <td><a href="{{ path('orderitem_show', { 'id': orderItem.id }) }}">{{ orderItem.id }}</a></td>
-                <td>{{ orderItem.name }}</td>
-                <td>{{ orderItem.nameEs }}</td>
-                <td>{{ orderItem.codigo }}</td>
-                <td>{{ orderItem.unitPrice }}</td>
-                <td>{{ orderItem.unit }}</td>
                 <td>{{ orderItem.quantity }}</td>
                 <td>{{ orderItem.description }}</td>
+                <td>{{ orderItem.productId }}</td>
                 <td>
                     <ul>
                         <li>

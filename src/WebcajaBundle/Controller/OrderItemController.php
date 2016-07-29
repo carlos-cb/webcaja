@@ -18,12 +18,11 @@ class OrderItemController extends Controller
      * Lists all OrderItem entities.
      *
      */
-    public function indexAction($id)
+    public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $query = $em->createQuery("SELECT p FROM WebcajaBundle:OrderItem p WHERE p.orderInfo=$id");
-        $orderItems = $query->getResult();
+        $orderItems = $em->getRepository('WebcajaBundle:OrderItem')->findAll();
 
         return $this->render('orderitem/index.html.twig', array(
             'orderItems' => $orderItems,
