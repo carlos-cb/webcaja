@@ -20,4 +20,10 @@ WebcajaBundle\Entity\CartItem:
             joinColumn:
                 name: cart_id
                 referencedColumnName: id
+    oneToOne:
+        product:
+            targetEntity: Product
+            joinColumn:
+                name: product_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }

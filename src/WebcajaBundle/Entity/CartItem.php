@@ -15,36 +15,10 @@ class CartItem
     private $id;
 
     /**
-     * @var float
-     */
-    private $unitPrice;
-
-    /**
      * @var int
      */
     private $quantity;
-
-    /**
-     * @var int
-     */
-    private $unit;
-
-    /**
-     * @var string
-     */
-    private $name;
-
-    /**
-     * @var string
-     */
-    private $codigo;
-
-    /**
-     * @var float
-     */
-    private $price;
-
-
+    
     /**
      * Get id
      *
@@ -54,30 +28,7 @@ class CartItem
     {
         return $this->id;
     }
-
-    /**
-     * Set unitPrice
-     *
-     * @param float $unitPrice
-     * @return CartItem
-     */
-    public function setUnitPrice($unitPrice)
-    {
-        $this->unitPrice = $unitPrice;
-
-        return $this;
-    }
-
-    /**
-     * Get unitPrice
-     *
-     * @return float 
-     */
-    public function getUnitPrice()
-    {
-        return $this->unitPrice;
-    }
-
+    
     /**
      * Set quantity
      *
@@ -100,98 +51,7 @@ class CartItem
     {
         return $this->quantity;
     }
-
-    /**
-     * Set unit
-     *
-     * @param integer $unit
-     * @return CartItem
-     */
-    public function setUnit($unit)
-    {
-        $this->unit = $unit;
-
-        return $this;
-    }
-
-    /**
-     * Get unit
-     *
-     * @return integer 
-     */
-    public function getUnit()
-    {
-        return $this->unit;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return CartItem
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set codigo
-     *
-     * @param string $codigo
-     * @return CartItem
-     */
-    public function setCodigo($codigo)
-    {
-        $this->codigo = $codigo;
-
-        return $this;
-    }
-
-    /**
-     * Get codigo
-     *
-     * @return string 
-     */
-    public function getCodigo()
-    {
-        return $this->codigo;
-    }
-
-    /**
-     * Set price
-     *
-     * @param float $price
-     * @return CartItem
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return float 
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
+    
     /**
      * @var \WebcajaBundle\Entity\Cart
      */
@@ -247,5 +107,33 @@ class CartItem
     public function getProductId()
     {
         return $this->productId;
+    }
+    /**
+     * @var \WebcajaBundle\Entity\Product
+     */
+    private $product;
+
+
+    /**
+     * Set product
+     *
+     * @param \WebcajaBundle\Entity\Product $product
+     * @return CartItem
+     */
+    public function setProduct(\WebcajaBundle\Entity\Product $product = null)
+    {
+        $this->product = $product;
+
+        return $this;
+    }
+
+    /**
+     * Get product
+     *
+     * @return \WebcajaBundle\Entity\Product 
+     */
+    public function getProduct()
+    {
+        return $this->product;
     }
 }

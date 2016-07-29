@@ -9,20 +9,11 @@ class CarritoController extends Controller
 {
     public function carritoAction()
     {
-        $session = new Session();
-        $cart = $session->get('cartElements');
-        $em = $this->getDoctrine()->getManager();
-
-        if($cart){
-            $cartArray = implode(', ', $cart);
-            $query = $em->createQuery("SELECT p FROM WebcajaBundle:Product p WHERE p.id in ($cartArray)");
-            $productsEnCarritos = $query->getResult();
-        }else{
-            $productsEnCarritos = null;
-        }
+        $cart = $this->getUser()->getCart();
+        $cartItems = $cart->getCartItems();
 
         return $this->render('WebcajaBundle:Default:carrito.html.twig', array(
-            'productsEnCarritos' => $productsEnCarritos,
+            'cartItems' => $cartItems,
         ));
     }
 
