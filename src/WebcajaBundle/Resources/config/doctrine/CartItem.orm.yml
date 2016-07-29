@@ -11,8 +11,6 @@ WebcajaBundle\Entity\CartItem:
     fields:
         quantity:
             type: integer
-        productId:
-            type: integer
     manyToOne:
         cart:
             targetEntity: Cart

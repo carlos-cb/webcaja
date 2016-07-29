@@ -26,6 +26,10 @@ webcaja_orderitem:
     resource: "@WebcajaBundle/Resources/config/routing/orderitem.yml"
     prefix:   /admin/orderitem
 
+webcaja_carrito:
+    resource: "@WebcajaBundle/Resources/config/routing/cart.yml"
+    prefix:   /carrito
+
 webcaja_categoryList:
     path:     /categoryList
     defaults: { _controller: WebcajaBundle:Default:categoryList }
@@ -33,18 +37,6 @@ webcaja_categoryList:
 webcaja_productList:
     path:     /productList/{id}
     defaults: { _controller: WebcajaBundle:Default:productList }
-
-webcaja_carrito:
-    path:     /carrito
-    defaults: { _controller: WebcajaBundle:Carrito:carrito }
-
-webcaja_addToCarrito:
-    path:     /addToCarrito/{id}
-    defaults: { _controller: WebcajaBundle:Carrito:addToCarrito }
-
-webcaja_clearCarrito:
-    path:     /clearCarrito
-    defaults: { _controller: WebcajaBundle:Carrito:clearCarrito }
 
 webcaja_carritoToOrder:
     path:     /carritoToOrder

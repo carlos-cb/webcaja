@@ -80,34 +80,7 @@ class CartItem
     {
         return $this->cart;
     }
-    /**
-     * @var integer
-     */
-    private $productId;
 
-
-    /**
-     * Set productId
-     *
-     * @param integer $productId
-     * @return CartItem
-     */
-    public function setProductId($productId)
-    {
-        $this->productId = $productId;
-
-        return $this;
-    }
-
-    /**
-     * Get productId
-     *
-     * @return integer 
-     */
-    public function getProductId()
-    {
-        return $this->productId;
-    }
     /**
      * @var \WebcajaBundle\Entity\Product
      */

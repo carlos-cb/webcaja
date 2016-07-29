@@ -153,4 +153,25 @@ class Cart
     {
         return $this->cartItems;
     }
+
+    /**
+     * Get cartItem
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCartItem($productId)
+    {
+        foreach ($this->cartItems as $cartItem){
+            if($cartItem->getProduct()->getId() === $productId){
+                return $cartItem;
+            }
+            return -1;
+        }
+    }
+
+    public function hasCartItem(CartItem $newCartItem)
+    {
+        $productId = $newCartItem->getProduct()->getId();
+        return $this->getCartItem($productId);
+    }
 }

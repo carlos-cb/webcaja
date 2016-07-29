@@ -54,7 +54,7 @@ $(document).ready(function(){
         var test=1;
         $.ajax({
             type: 'POST',
-            url: "{{ path('webcaja_carritoOrderinfo') }}",
+            url: "/carritoOrderinfo",
             data: {val1:"1",val2:"2"},
             success: function(data) {
                 alert (data);

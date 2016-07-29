@@ -4,6 +4,8 @@ namespace WebcajaBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Session\Session;
+use WebcajaBundle\Entity\CartItem;
+use WebcajaBundle\Entity\Product;
 
 class CarritoController extends Controller
 {
@@ -17,28 +19,35 @@ class CarritoController extends Controller
         ));
     }
 
-    public function addToCarritoAction($id)
+    public function addToCarritoAction(Product $product)
     {
-        $session = new Session();
-        if(!$session->get('cartElements')){
-            $session->set('cartElements', array());
+        $cart = $this->getUser()->getCart();
+        
+        $newCartItem = new CartItem();
+        $newCartItem->setCart($cart)->setProduct($product)->setQuantity(1);
+        
+        if(!$cart->hasCartItem($newCartItem)){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($newCartItem);
+            $em->flush();
         }
-
-        $cart = $session->get('cartElements');
-        if(!in_array($id, $cart)){
-            array_push($cart, $id);
-            $session->set('cartElements', $cart);
-        }
-
+        
         return $this->redirectToRoute('webcaja_carrito');
     }
 
     public function clearCarritoAction()
     {
-        $session = new Session();
-        $session->clear();
+        $cart = $this->getUser()->getCart();
+        $cartItems = $cart->getCartItems();
+
+        $em = $this->getDoctrine()->getManager();
+        foreach($cartItems as $cartItem){
+            $em->remove($cartItem);
+        }
+        $em->flush();
 
         return $this->redirectToRoute('webcaja_carrito');
     }
 
+    
 }
