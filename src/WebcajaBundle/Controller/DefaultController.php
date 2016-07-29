@@ -3,6 +3,7 @@
 namespace WebcajaBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use WebcajaBundle\Entity\Cart;
 
 
 class DefaultController extends Controller
@@ -23,6 +24,18 @@ class DefaultController extends Controller
 
         $categories = $em->getRepository('WebcajaBundle:Category')->findAll();
 
+        if(!$this->getUser()->getCart()) {
+            $cart = new Cart();
+            $cart->setCartState('buying');
+            $cart->setCreateDate(new \DateTime('now'));
+            $cart->setUser($this->getUser());
+
+            if ($cart) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($cart);
+                $em->flush();
+            }
+        }
         return $this->render('WebcajaBundle:Default:categoryList.html.twig', array(
             'categories' => $categories,
         ));

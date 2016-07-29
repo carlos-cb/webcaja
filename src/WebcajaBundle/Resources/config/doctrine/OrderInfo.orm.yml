@@ -51,4 +51,11 @@ WebcajaBundle\Entity\OrderInfo:
         orderItems:
             targetEntity: OrderItem
             mappedBy: orderInfo
+    manyToOne:
+        user:
+            targetEntity: User
+            inversedBy: orderInfos
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }

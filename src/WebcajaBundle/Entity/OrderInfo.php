@@ -493,4 +493,32 @@ class OrderInfo
     {
         return $this->orderItems;
     }
+    /**
+     * @var \WebcajaBundle\Entity\User
+     */
+    private $user;
+
+
+    /**
+     * Set user
+     *
+     * @param \WebcajaBundle\Entity\User $user
+     * @return OrderInfo
+     */
+    public function setUser(\WebcajaBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \WebcajaBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }
