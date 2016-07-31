@@ -3,9 +3,9 @@
 namespace WebcajaBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Session\Session;
 use WebcajaBundle\Entity\CartItem;
 use WebcajaBundle\Entity\Product;
+use Symfony\Component\HttpFoundation\Request;
 
 class CarritoController extends Controller
 {
@@ -49,5 +49,22 @@ class CarritoController extends Controller
         return $this->redirectToRoute('webcaja_carrito');
     }
 
-    
+    public function ajaxUpdateAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $cart = $this->getUser()->getCart();
+
+        $isAdd = $request->get('val1');
+        $productId = $request->get('val2');
+        
+        $cartItem = $cart->getCartItem($productId);
+        $oldQuantity = $cartItem->getQuantity();
+        $cartItem->setQuantity($oldQuantity+$isAdd);
+
+        $em->persist($cartItem);
+        $em->flush();
+        
+
+        return $this->redirectToRoute('webcaja_carrito');
+    }
 }

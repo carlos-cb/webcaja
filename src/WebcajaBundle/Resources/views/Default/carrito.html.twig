@@ -14,6 +14,7 @@
     {% for cartItem in cartItems %}
         <hr class="featurette-divider">
         <ul>
+            <li>产品id：<span id="id">{{ cartItem.product.id }}</span></li>
             <li>产品：<span id="name">{{ cartItem.product.name }}</span></li>
             <li>单位：<span id="unit">{{ cartItem.product.unit }}</span>件/包</li>
             <li>编号：<span id="codigo">{{ cartItem.product.code }}</span></li>

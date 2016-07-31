@@ -1,14 +1,15 @@
 webcaja_carrito:
     path:     /
     defaults: { _controller: "WebcajaBundle:Carrito:carrito" }
-    methods:  GET
 
 webcaja_addToCarrito:
     path:     /addToCarrito/{id}
     defaults: { _controller: "WebcajaBundle:Carrito:addToCarrito" }
-    methods:  GET
 
 webcaja_clearCarrito:
     path:     /clearCarrito
     defaults: { _controller: "WebcajaBundle:Carrito:clearCarrito" }
-    methods:  [GET, POST]
+
+webcaja_ajaxCarrito:
+    path:     /ajaxUpdate
+    defaults: { _controller: "WebcajaBundle:Carrito:ajaxUpdate" }

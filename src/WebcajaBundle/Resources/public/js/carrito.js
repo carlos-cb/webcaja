@@ -1,10 +1,21 @@
 
 $(function(){
     $(".add").click(function(){
-        var t=$(this).parent().find('input[class*=text_box]');
+        var t = $(this).parent().find('input[class*=text_box]');
         t.val(parseInt(t.val())+1)
         setHeji();
         setTotal();
+        var isAdd = 1;
+        var productid = parseInt($(this).parent().find('#id').text());
+        $.ajax({
+            type: 'POST',
+            url: "/carrito/ajaxUpdate",
+            data: {val1: isAdd, val2: productid},
+            error: function(XMLHttpRequest, textStatus, errorThrown)
+            {
+                alert('Error: ' +  errorThrown);
+            }
+        });
     })
     $(".min").click(function(){
         var t=$(this).parent().find('input[class*=text_box]');
@@ -14,6 +25,17 @@ $(function(){
         }
         setHeji();
         setTotal();
+        var isAdd = -1;
+        var productid = parseInt($(this).parent().find('#id').text());
+        $.ajax({
+            type: 'POST',
+            url: "/carrito/ajaxUpdate",
+            data: {val1: isAdd, val2: productid},
+            error: function(XMLHttpRequest, textStatus, errorThrown)
+            {
+                alert('Error: ' +  errorThrown);
+            }
+        });
     })
     function setHeji(){
         var ff = $('#shangpin').find('ul');
@@ -37,6 +59,7 @@ $(function(){
 
 $(document).ready(function(){
     $(".jiezhang").click(function(){
+        var ssd = 12;
         var ggggg = $('#shangpin').find('ul');
         var orderItems = new Array();
         var total = parseFloat($("#total").text());
@@ -49,16 +72,11 @@ $(document).ready(function(){
             orderItems[k]['quantity'] = parseInt($(ggggg[k]).find('.text_box').val());
             orderItems[k]['heji'] = parseFloat($(ggggg[k]).find('#heji').text());
         }
-        //$.session.set('orderItems', orderItems)
         alert(total);
-        var test=1;
         $.ajax({
             type: 'POST',
-            url: "/carritoOrderinfo",
-            data: {val1:"1",val2:"2"},
-            success: function(data) {
-                alert (data);
-            },
+            url: "/carrito/ajaxUpdate",
+            data: {val1: ssd,val2:"2"},
             error: function(XMLHttpRequest, textStatus, errorThrown)
             {
                 alert('Error: ' +  errorThrown);

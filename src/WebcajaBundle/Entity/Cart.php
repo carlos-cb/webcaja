@@ -162,7 +162,7 @@ class Cart
     public function getCartItem($productId)
     {
         foreach ($this->cartItems as $cartItem){
-            if($cartItem->getProduct()->getId() === $productId){
+            if($cartItem->getProduct()->getId() == $productId){
                 return $cartItem;
             }
             return -1;
