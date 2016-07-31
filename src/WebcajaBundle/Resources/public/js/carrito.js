@@ -1,6 +1,6 @@
 
 $(function(){
-    $(".add").click(function(){
+    $(".addnum").click(function(){
         var t = $(this).parent().find('input[class*=text_box]');
         t.val(parseInt(t.val())+1)
         setHeji();
@@ -17,7 +17,7 @@ $(function(){
             }
         });
     })
-    $(".min").click(function(){
+    $(".minnum").click(function(){
         var t=$(this).parent().find('input[class*=text_box]');
         t.val(parseInt(t.val())-1)
         if(parseInt(t.val())<0){

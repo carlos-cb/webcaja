@@ -11,20 +11,19 @@ class OrderController extends Controller
     public function carritoOrderinfoAction(Request $request)
     {
         if($request->getMethod() == 'POST'){
-            $name = $request->get('name');
             $orderInfo = new OrderInfo();
             $orderInfo->setUser($this->getUser())
                 ->setOrderDate(new \DateTime('now'))
                 ->setGoodsFee(1)
                 ->setTotalPrice(1)
                 ->setShipFee(0)
-                ->setPayType("到付")
-                ->setReceiverName($name)
-                ->setReceiverPhone(1)
-                ->setReceiverAdress(1)
-                ->setReceiverCity(1)
-                ->setReceiverProvince(1)
-                ->setReceiverPostcode(1)
+                ->setPayType($request->get('paytype'))
+                ->setReceiverName($request->get('name'))
+                ->setReceiverPhone($request->get('phonenumber'))
+                ->setReceiverAdress($request->get('address'))
+                ->setReceiverCity($request->get('city'))
+                ->setReceiverProvince($request->get('province'))
+                ->setReceiverPostcode($request->get('postcode'))
                 ->setIsConfirmed(true)
                 ->setIsSended(false)
                 ->setIsOver(false)
