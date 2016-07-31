@@ -18,7 +18,6 @@ WebcajaBundle\Entity\CartItem:
             joinColumn:
                 name: cart_id
                 referencedColumnName: id
-    oneToOne:
         product:
             targetEntity: Product
             joinColumn:

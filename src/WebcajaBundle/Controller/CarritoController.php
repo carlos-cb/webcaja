@@ -53,18 +53,16 @@ class CarritoController extends Controller
     public function ajaxUpdateAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $cart = $this->getUser()->getCart();
 
         $isAdd = $request->get('val1');
-        $productId = $request->get('val2');
-        
-        $cartItem = $cart->getCartItem($productId);
-        $oldQuantity = $cartItem->getQuantity();
-        $cartItem->setQuantity($oldQuantity+$isAdd);
+        $cartItemId = $request->get('val2');
+
+        $repository = $this->getDoctrine()->getRepository('WebcajaBundle:CartItem');
+        $cartItem = $repository->find($cartItemId);
+        $cartItem->setQuantity($cartItem->getQuantity()+$isAdd);
 
         $em->persist($cartItem);
         $em->flush();
-        
 
         return $this->redirectToRoute('webcaja_carrito');
     }

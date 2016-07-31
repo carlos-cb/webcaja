@@ -38,7 +38,7 @@
         <tbody>
         {% for orderInfo in orderInfos %}
             <tr>
-                <td><a href="{{ path('orderinfo_show', { 'id': orderInfo.id }) }}">{{ orderInfo.id }}</a></td>
+                <td>{{ orderInfo.id }}</a></td>
                 <td>{{ orderInfo.receiverName }}</td>
                 <td>{{ orderInfo.receiverPhone }}</td>
                 <td>{{ orderInfo.goodsFee }}</td>
@@ -56,10 +56,7 @@
                             <a href="{{ path('orderinfo_show', { 'id': orderInfo.id }) }}">查看订单详情</a>
                         </li>
                         <li>
-                            <a href="{{ path('orderinfo_edit', { 'id': orderInfo.id }) }}">修改订单</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('orderitem_index', { 'id': orderInfo.id }) }}">查看货物列表</a>
+                            <a href="{{ path('orderitem_index', { 'orderInfoId': orderInfo.id }) }}">查看货物列表</a>
                         </li>
                     </ul>
                 </td>
@@ -67,10 +64,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('orderinfo_new') }}" class="button button-rounded">创建新订单</a>
-        </li>
-    </ul>
 {% endblock %}

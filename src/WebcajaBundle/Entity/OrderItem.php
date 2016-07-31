@@ -15,40 +15,9 @@ class OrderItem
     private $id;
 
     /**
-     * @var float
-     */
-    private $unitPrice;
-
-    /**
-     * @var int
-     */
-    private $unit;
-
-    /**
      * @var int
      */
     private $quantity;
-
-    /**
-     * @var string
-     */
-    private $name;
-
-    /**
-     * @var string
-     */
-    private $nameEs;
-
-    /**
-     * @var string
-     */
-    private $codigo;
-
-    /**
-     * @var string
-     */
-    private $description;
-
 
     /**
      * Get id
@@ -58,52 +27,6 @@ class OrderItem
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set unitPrice
-     *
-     * @param float $unitPrice
-     * @return OrderItem
-     */
-    public function setUnitPrice($unitPrice)
-    {
-        $this->unitPrice = $unitPrice;
-
-        return $this;
-    }
-
-    /**
-     * Get unitPrice
-     *
-     * @return float 
-     */
-    public function getUnitPrice()
-    {
-        return $this->unitPrice;
-    }
-
-    /**
-     * Set unit
-     *
-     * @param integer $unit
-     * @return OrderItem
-     */
-    public function setUnit($unit)
-    {
-        $this->unit = $unit;
-
-        return $this;
-    }
-
-    /**
-     * Get unit
-     *
-     * @return integer 
-     */
-    public function getUnit()
-    {
-        return $this->unit;
     }
 
     /**
@@ -127,98 +50,6 @@ class OrderItem
     public function getQuantity()
     {
         return $this->quantity;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return OrderItem
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set nameEs
-     *
-     * @param string $nameEs
-     * @return OrderItem
-     */
-    public function setNameEs($nameEs)
-    {
-        $this->nameEs = $nameEs;
-
-        return $this;
-    }
-
-    /**
-     * Get nameEs
-     *
-     * @return string 
-     */
-    public function getNameEs()
-    {
-        return $this->nameEs;
-    }
-
-    /**
-     * Set codigo
-     *
-     * @param string $codigo
-     * @return OrderItem
-     */
-    public function setCodigo($codigo)
-    {
-        $this->codigo = $codigo;
-
-        return $this;
-    }
-
-    /**
-     * Get codigo
-     *
-     * @return string 
-     */
-    public function getCodigo()
-    {
-        return $this->codigo;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     * @return OrderItem
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
     }
 
     public function __toString() {
@@ -257,6 +88,11 @@ class OrderItem
      */
     private $productId;
 
+    /**
+     * @var \WebcajaBundle\Entity\Product
+     */
+    private $product;
+
 
     /**
      * Set productId
@@ -279,5 +115,28 @@ class OrderItem
     public function getProductId()
     {
         return $this->productId;
+    }
+
+    /**
+     * Set product
+     *
+     * @param \WebcajaBundle\Entity\Product $product
+     * @return OrderItem
+     */
+    public function setProduct(\WebcajaBundle\Entity\Product $product = null)
+    {
+        $this->product = $product;
+
+        return $this;
+    }
+
+    /**
+     * Get product
+     *
+     * @return \WebcajaBundle\Entity\Product 
+     */
+    public function getProduct()
+    {
+        return $this->product;
     }
 }

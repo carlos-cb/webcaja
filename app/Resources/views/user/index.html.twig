@@ -34,7 +34,7 @@
         {% for user in users %}
             <tr>
                 <td>{{ user.id }}</td>
-                <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.username }}</a></td>
+                <td>{{ user.username }}</a></td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.enabled }}</td>
                 <td>{% if user.lastLogin %}{{ user.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
@@ -48,9 +48,6 @@
                 </td>
                 <td>
                     <ul>
-                        <li>
-                            <a href="{{ path('user_show', { 'id': user.id }) }}">查看</a>
-                        </li>
                         <li>
                             <a href="{{ path('user_edit', { 'id': user.id }) }}">修改</a>
                         </li>

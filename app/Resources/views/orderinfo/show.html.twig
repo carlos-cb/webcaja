@@ -17,70 +17,70 @@
 {% block content %}
         <h1 class="sub-header">订单查看</h1>
         <br>
-        <table class="table-bordered table-striped table-hover" width="400" height="200">
+        <table class="table-bordered table-striped table-hover" width="400px" height="500px">
         <tbody>
             <tr>
                 <th>订单号</th>
                 <td>{{ orderInfo.id }}</td>
             </tr>
             <tr>
-                <th>Orderdate</th>
+                <th>订单生成时间</th>
                 <td>{% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Goodsfee</th>
+                <th>商品总价</th>
                 <td>{{ orderInfo.goodsFee }}</td>
             </tr>
             <tr>
-                <th>Totalprice</th>
+                <th>订单总价</th>
                 <td>{{ orderInfo.totalPrice }}</td>
             </tr>
             <tr>
-                <th>Shipfee</th>
+                <th>运费</th>
                 <td>{{ orderInfo.shipFee }}</td>
             </tr>
             <tr>
-                <th>Paytype</th>
+                <th>付款方式</th>
                 <td>{{ orderInfo.payType }}</td>
             </tr>
             <tr>
-                <th>Receivername</th>
+                <th>收货人姓名</th>
                 <td>{{ orderInfo.receiverName }}</td>
             </tr>
             <tr>
-                <th>Receiverphone</th>
+                <th>收货人联系电话</th>
                 <td>{{ orderInfo.receiverPhone }}</td>
             </tr>
             <tr>
-                <th>Receiveradress</th>
+                <th>收货地址</th>
                 <td>{{ orderInfo.receiverAdress }}</td>
             </tr>
             <tr>
-                <th>Receivercity</th>
+                <th>城市</th>
                 <td>{{ orderInfo.receiverCity }}</td>
             </tr>
             <tr>
-                <th>Receiverprovince</th>
+                <th>省份</th>
                 <td>{{ orderInfo.receiverProvince }}</td>
             </tr>
             <tr>
-                <th>Receiverpostcode</th>
+                <th>邮编</th>
                 <td>{{ orderInfo.receiverPostcode }}</td>
             </tr>
             <tr>
-                <th>Isconfirmed</th>
+                <th>订单已确认</th>
                 <td>{% if orderInfo.isConfirmed %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
-                <th>Issended</th>
+                <th>订单已发货</th>
                 <td>{% if orderInfo.isSended %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
-                <th>Isover</th>
+                <th>订单已归档</th>
                 <td>{% if orderInfo.isOver %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
-                <th>State</th>
+                <th>订单状态</th>
                 <td>{{ orderInfo.state }}</td>
             </tr>
         </tbody>
@@ -88,7 +88,6 @@
     <br><br>
     <ul>
         <li>
-            <a href="{{ path('orderinfo_edit', { 'id': orderInfo.id }) }}" class="button button-rounded">修改</a>
             <a href="{{ path('orderinfo_index') }}" class="button button-rounded">返回订单列表</a>
         </li>
         <br>

@@ -11,10 +11,6 @@ WebcajaBundle\Entity\OrderItem:
     fields:
         quantity:
             type: integer
-        description:
-            type: string
-            length: 255
-            nullable: true
         productId:
             type: integer
     manyToOne:
@@ -23,5 +19,10 @@ WebcajaBundle\Entity\OrderItem:
             inversedBy: orderItems
             joinColumn:
                 name: orderInfo_id
+                referencedColumnName: id
+        product:
+            targetEntity: Product
+            joinColumn:
+                name: product_id
                 referencedColumnName: id
     lifecycleCallbacks: {  }

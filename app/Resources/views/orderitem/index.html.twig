@@ -1,43 +1,38 @@
-{% extends 'base.html.twig' %}
+{% extends 'WebcajaBundle:BackEnd:index.html.twig' %}
 
-{% block body %}
-    <h1>OrderItem list</h1>
+{% block menuslide %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('webcaja_homepage_admin') }}">总览 <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">报告</a></li>
+        <li><a href="#">分析</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('user_index') }}">用户管理</a></li>
+        <li><a href="{{ path('category_index') }}">分类管理</a></li>
+        <li><a href="{{ path('product_index') }}">产品管理</a></li>
+        <li class="active"><a href="{{ path('orderinfo_index') }}">订单管理</a></li>
+    </ul>
+{% endblock %}
 
-    <table>
+{% block content %}
+    <h1 class="sub-header">订单货物列表</h1>
+    <h3>订单编号：{{ orderInfo.id }}</h3>
+    <table class="table table-bordered table-striped table-hover">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Quantity</th>
-                <th>Description</th>
-                <th>Productid</th>
-                <th>Actions</th>
+                <th>ID</th>
+                <th>数量(包/箱)</th>
+                <th>产品编号</th>
             </tr>
         </thead>
         <tbody>
         {% for orderItem in orderItems %}
             <tr>
-                <td><a href="{{ path('orderitem_show', { 'id': orderItem.id }) }}">{{ orderItem.id }}</a></td>
+                <td>{{ orderItem.id }}</a></td>
                 <td>{{ orderItem.quantity }}</td>
-                <td>{{ orderItem.description }}</td>
-                <td>{{ orderItem.productId }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('orderitem_show', { 'id': orderItem.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('orderitem_edit', { 'id': orderItem.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
+                <td>{{ orderItem.product.code }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('orderitem_new') }}">Create a new entry</a>
-        </li>
-    </ul>
 {% endblock %}

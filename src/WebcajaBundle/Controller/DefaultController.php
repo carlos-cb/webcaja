@@ -24,17 +24,24 @@ class DefaultController extends Controller
 
         $categories = $em->getRepository('WebcajaBundle:Category')->findAll();
 
-        if(!$this->getUser()->getCart()) {
+        $cart = $this->getUser()->getCart();
+        if(!$cart) {
             $cart = new Cart();
-            $cart->setCartState('buying');
-            $cart->setCreateDate(new \DateTime('now'));
-            $cart->setUser($this->getUser());
+            $cart->setCartState('buying')
+                ->setCreateDate(new \DateTime('now'))
+                ->setUser($this->getUser());
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($cart);
+            $em->flush();
+        }
+        else if($cart->getCartState() == 'over')
+        {
+            $cart->setCartState('buying')
+                ->setCreateDate(new \DateTime('now'));
 
-            if ($cart) {
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($cart);
-                $em->flush();
-            }
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($cart);
+            $em->flush();
         }
         return $this->render('WebcajaBundle:Default:categoryList.html.twig', array(
             'categories' => $categories,

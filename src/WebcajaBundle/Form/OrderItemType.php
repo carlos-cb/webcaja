@@ -15,14 +15,7 @@ class OrderItemType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('unitPrice')
-            ->add('unit')
             ->add('quantity')
-            ->add('name')
-            ->add('nameEs')
-            ->add('codigo')
-            ->add('description')
-            ->add('orderInfo')
         ;
     }
     

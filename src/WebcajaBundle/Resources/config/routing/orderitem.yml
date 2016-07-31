@@ -1,5 +1,5 @@
 orderitem_index:
-    path:     /
+    path:     /{orderInfoId}
     defaults: { _controller: "WebcajaBundle:OrderItem:index" }
     methods:  GET
 
