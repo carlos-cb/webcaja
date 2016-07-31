@@ -25,8 +25,9 @@ class CarritoController extends Controller
         
         $newCartItem = new CartItem();
         $newCartItem->setCart($cart)->setProduct($product)->setQuantity(1);
+        $cart->addCartItem($newCartItem);
         
-        if(!$cart->hasCartItem($newCartItem)){
+        if($cart->hasCartItem($newCartItem)){
             $em = $this->getDoctrine()->getManager();
             $em->persist($newCartItem);
             $em->flush();

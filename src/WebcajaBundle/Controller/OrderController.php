@@ -8,36 +8,31 @@ use WebcajaBundle\Entity\OrderInfo;
 
 class OrderController extends Controller
 {
-    /**
-     * Creates a new OrderInfo entity.
-     *
-     */
-    public function carritoToOrderAction()
-    {
-
-    }
-
     public function carritoOrderinfoAction(Request $request)
     {
-        $data = $request->get('val1');
-        $p1 = $data;
-        
-        $orderInfo = new OrderInfo();
-        $form = $this->createForm('WebcajaBundle\Form\OrderInfoClientType', $orderInfo);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        if($request->getMethod() == 'POST'){
+            $name = $request->get('name');
+            $orderInfo = new OrderInfo();
+            $orderInfo->setUser($this->getUser())
+                ->setOrderDate(new \DateTime('now'))
+                ->setGoodsFee(1)
+                ->setTotalPrice(1)
+                ->setShipFee(0)
+                ->setPayType("到付")
+                ->setReceiverName($name)
+                ->setReceiverPhone(1)
+                ->setReceiverAdress(1)
+                ->setReceiverCity(1)
+                ->setReceiverProvince(1)
+                ->setReceiverPostcode(1)
+                ->setIsConfirmed(true)
+                ->setIsSended(false)
+                ->setIsOver(false)
+                ->setState("运行中");
             $em = $this->getDoctrine()->getManager();
             $em->persist($orderInfo);
             $em->flush();
-
-            return $this->redirectToRoute('webcaja_carritoToOrder', array('id' => $orderInfo->getId()));
         }
-
-        return $this->render('WebcajaBundle:Default:carritoOrderinfo.html.twig', array(
-            'orderInfo' => $orderInfo,
-            'form' => $form->createView(),
-            'p1' => $p1,
-        ));
+        return $this->redirectToRoute('webcaja_carrito');
     }
 }

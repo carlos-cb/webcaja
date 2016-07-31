@@ -57,7 +57,7 @@ $(function(){
 })
 
 
-$(document).ready(function(){
+ $(document).ready(function(){
     $(".jiezhang").click(function(){
         var ssd = 12;
         var ggggg = $('#shangpin').find('ul');
@@ -72,16 +72,18 @@ $(document).ready(function(){
             orderItems[k]['quantity'] = parseInt($(ggggg[k]).find('.text_box').val());
             orderItems[k]['heji'] = parseFloat($(ggggg[k]).find('#heji').text());
         }
-        alert(total);
-        $.ajax({
-            type: 'POST',
-            url: "/carrito/ajaxUpdate",
-            data: {val1: ssd,val2:"2"},
-            error: function(XMLHttpRequest, textStatus, errorThrown)
-            {
-                alert('Error: ' +  errorThrown);
+    });
+});
+
+$(document).ready(function() {
+    $(".jiezhang").fancybox({
+        helpers : {
+            overlay : {
+                css : {
+                    'background' : 'rgba(40, 33, 27, 0.3)'
+                }
             }
-        });
+        }
     });
 });
 

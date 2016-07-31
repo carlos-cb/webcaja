@@ -38,10 +38,6 @@ webcaja_productList:
     path:     /productList/{id}
     defaults: { _controller: WebcajaBundle:Default:productList }
 
-webcaja_carritoToOrder:
-    path:     /carritoToOrder
-    defaults: { _controller: WebcajaBundle:Order:carritoToOrder }
-
 webcaja_carritoOrderinfo:
     path:     /carritoOrderinfo
     defaults: { _controller: WebcajaBundle:Order:carritoOrderinfo }
