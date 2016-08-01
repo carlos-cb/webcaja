@@ -40,6 +40,10 @@ class ProductController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $product->getFoto();
+            $fileName = $this->get('webcaja.foto_uploader')->upload($file);
+            $product->setFoto($fileName);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
@@ -73,11 +77,22 @@ class ProductController extends Controller
      */
     public function editAction(Request $request, Product $product)
     {
+        $fileOld = $product->getFoto();
         $deleteForm = $this->createDeleteForm($product);
         $editForm = $this->createForm('WebcajaBundle\Form\ProductType', $product);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $file = $product->getFoto();
+            if($file != $fileOld)
+            {
+                $isRemoved = $this->get('webcaja.foto_uploader')->remove($fileOld);
+                if($isRemoved){
+                    $fileName = $this->get('webcaja.foto_uploader')->upload($file);
+                    $product->setFoto($fileName);
+                }
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
@@ -102,6 +117,11 @@ class ProductController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $product->getFoto();
+            if($file){
+                $isRemoved = $this->get('webcaja.foto_uploader')->remove($file);
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->remove($product);
             $em->flush();

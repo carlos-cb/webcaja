@@ -5,6 +5,7 @@ namespace WebcajaBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class ProductType extends AbstractType
 {
@@ -27,7 +28,11 @@ class ProductType extends AbstractType
             ->add('stock', null, array('label' => '产品库存'))
             ->add('price', null, array('label' => '产品单价'))
             ->add('description', 'text', array('label' => '产品描述', 'required' => false))
-            ->add('foto', 'text', array('label' => '照片', 'required' => false))
+            ->add('foto', FileType::class, array(
+                'label' => '产品图片',
+                'data_class' => null,
+                'required' => false,
+            ))
         ;
     }
     
