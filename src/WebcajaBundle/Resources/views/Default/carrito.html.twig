@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'font.html.twig' %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -8,10 +8,6 @@
 {% block body %}
     <h1>web叫货系统</h1>
     <ul>
-        <li><a href="{{ path('webcaja_homepage') }}">首页</a></li>
-        <li><a href="{{ path('webcaja_categoryList') }}">选购</a></li>
-        <li><a href="{{ path('webcaja_homepage') }}">搜索</a></li>
-        <li><a href="{{ path('webcaja_carrito') }}">购物车</a></li>
         <li><a href="{{ path('webcaja_clearCarrito') }}">清空购物车</a></li>
         <li><button class="jiezhang" href="#formorder">生成订单</button></li>
     </ul>

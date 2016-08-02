@@ -41,3 +41,21 @@ ul {
     position:relative;
     top: 200px;
 }
+
+.navbuttom ul{
+    width: 100%;
+}
+.navbuttom ul li{
+    width: 25%;
+    text-align: center;
+    font-size: 14px;
+}
+.navbuttom ul li a{
+    padding-top: 0;
+    padding-bottom: 10px;
+}
+.navbuttom ul .glyphicon{
+    margin-top: 10px;
+    font-size: 30px;
+    color: #fff;
+}
