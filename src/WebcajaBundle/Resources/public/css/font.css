@@ -34,3 +34,20 @@
 body {
     padding-top: 80px;
 }
+
+.category{
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+.categoryname h2{
+    padding-top: 20px;
+}
+.category span{
+    height:180px;
+    line-height:180px;
+    font-size: 26px;
+    font-weight: 600;
+}
+.fenlei{
+    color: #000;
+}
