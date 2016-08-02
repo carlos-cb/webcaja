@@ -277,8 +277,9 @@ class Product
      */
     public function setFoto($foto)
     {
-        $this->foto = $foto;
-
+        if(!empty($foto)){
+            $this->foto = $foto;
+        }
         return $this;
     }
 

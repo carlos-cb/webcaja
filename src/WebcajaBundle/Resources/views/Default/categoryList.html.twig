@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'font.html.twig' %}
 
 {% block body %}
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -9,14 +9,13 @@
         </div>
     </nav>
 
-    <h1>web叫货系统</h1>
-    <br>
-    <ul>
+    <div class="row">
         {% for category in categories %}
-            <li><a href="{{ path('webcaja_productList', { 'id': category.id }) }}">{{ category.name }}</a></li>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <a href="{{ path('webcaja_productList', { 'id': category.id }) }}">{{ category.name }}</a>
+            </div>
         {% endfor %}
-    </ul>
-
+    </div>
 
     <nav class="navbar navbar-inverse navbar-fixed-bottom">
         <div class="container navbuttom">

@@ -129,4 +129,33 @@ class Category
     public function __toString() {
         return strval($this->id);
     }
+    /**
+     * @var string
+     */
+    private $categoryFoto;
+
+
+    /**
+     * Set categoryFoto
+     *
+     * @param string $categoryFoto
+     * @return Category
+     */
+    public function setCategoryFoto($categoryFoto)
+    {
+        if(!empty($categoryFoto)){
+            $this->categoryFoto = $categoryFoto;
+        }
+        return $this;
+    }
+
+    /**
+     * Get categoryFoto
+     *
+     * @return string 
+     */
+    public function getCategoryFoto()
+    {
+        return $this->categoryFoto;
+    }
 }

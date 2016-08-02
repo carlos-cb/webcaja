@@ -40,11 +40,15 @@ class CategoryController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $category->getCategoryFoto();
+            $fileName = $this->get('webcaja.foto_uploader')->upload($file);
+            $category->setCategoryFoto($fileName);
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($category);
             $em->flush();
 
-            return $this->redirectToRoute('category_show', array('id' => $category->getId()));
+            return $this->redirectToRoute('category_index');
         }
 
         return $this->render('category/new.html.twig', array(
@@ -73,16 +77,27 @@ class CategoryController extends Controller
      */
     public function editAction(Request $request, Category $category)
     {
+        $fileOld = $category->getCategoryFoto();
         $deleteForm = $this->createDeleteForm($category);
         $editForm = $this->createForm('WebcajaBundle\Form\CategoryType', $category);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $file = $category->getCategoryFoto();
+            if($file != $fileOld)
+            {
+                $isRemoved = $this->get('webcaja.foto_uploader')->remove($fileOld);
+                if($isRemoved){
+                    $fileName = $this->get('webcaja.foto_uploader')->upload($file);
+                    $category->setCategoryFoto($fileName);
+                }
+            }
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($category);
             $em->flush();
 
-            return $this->redirectToRoute('category_edit', array('id' => $category->getId()));
+            return $this->redirectToRoute('category_index');
         }
 
         return $this->render('category/edit.html.twig', array(
@@ -102,6 +117,11 @@ class CategoryController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $category->getCategoryFoto();
+            if($file){
+                $isRemoved = $this->get('webcaja.foto_uploader')->remove($file);
+            }
+            
             $em = $this->getDoctrine()->getManager();
             $em->remove($category);
             $em->flush();

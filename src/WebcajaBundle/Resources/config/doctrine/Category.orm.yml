@@ -16,6 +16,10 @@ WebcajaBundle\Entity\Category:
             type: string
             length: 255
             column: name_es
+        categoryFoto:
+            type: string
+            length: 255
+            nullable: true
     oneToMany:
         products:
             targetEntity: Product

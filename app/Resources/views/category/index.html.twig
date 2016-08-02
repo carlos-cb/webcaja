@@ -23,6 +23,7 @@
                 <th>ID</th>
                 <th>产品分类名</th>
                 <th>产品分类西语名</th>
+                <th>分类图片</th>
                 <th>操作</th>
             </tr>
         </thead>
@@ -32,6 +33,7 @@
                 <td>{{ category.id }}</a></td>
                 <td>{{ category.name }}</td>
                 <td>{{ category.nameEs }}</td>
+                <td><img src="{{ asset('uploads/fotos/' ~ category.categoryFoto) }}" width="100" height="100"></td>
                 <td>
                     <ul>
                         <li>

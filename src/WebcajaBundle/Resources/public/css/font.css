@@ -1,0 +1,36 @@
+
+.navbuttom ul{
+    width: 100%;
+}
+.navbuttom ul li{
+    width: 25%;
+    text-align: center;
+    font-size: 14px;
+}
+.navbuttom ul li a{
+    padding-top: 0;
+    padding-bottom: 10px;
+    border-right:1px solid #7f8c8d;
+}
+.navbuttom ul .glyphicon{
+    margin-top: 10px;
+    font-size: 30px;
+    color: #fff;
+}
+
+.navbar-header {
+    float: left;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+    height: 60px;
+    margin-top: 10px;
+}
+.navbar-header a{
+    font-size: 30px;
+}
+.navbar-brand {float:none;}
+
+body {
+    padding-top: 80px;
+}
