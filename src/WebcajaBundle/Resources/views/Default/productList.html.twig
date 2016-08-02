@@ -9,11 +9,25 @@
         </div>
     </nav>
 
-    <h1>web叫货系统</h1>
-    <br>
-    <ul>
+
+    <div>
         {% for product in products %}
-            <li>{{ product.name }}</li><a href="{{ path('webcaja_addToCarrito', {'id': product.id }) }}">购买</a>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 product">
+            <div class="thumbnail">
+                <img src="{{ asset('uploads/fotos/' ~ product.foto) }}" data-src="{{ asset('uploads/fotos/' ~ product.foto) }}" width="300">
+                <div class="caption">
+                    <h5>
+                        {{ product.name }} {{ product.nameEs }}<br>
+                        <b>{{ product.unit }} u/c<br>{{ product.price }} €<br></b>
+                    </h5>
+                    <span class="button-wrap">
+                        <button class="button button-circle button-raised button-primary" onclick="location.href='{{ path('webcaja_addToCarrito', {'id': product.id }) }}';">
+                          <i class="fa fa-plus"></i>
+                        </button>
+                      </span>
+                </div>
+            </div>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
 {% endblock %}

@@ -14,7 +14,7 @@
             <a href="{{ path('webcaja_productList', { 'id': category.id }) }}" class="fenlei">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 category" data-path="{{ path('webcaja_productList', { 'id': category.id }) }}">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 categoryfoto">
-                    <img src="{{ asset('uploads/fotos/' ~ category.categoryFoto) }}" height="180px">
+                    <img src="{{ asset('uploads/fotos/' ~ category.categoryFoto) }}" width=100%>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 categoryname">
                     <h2>{{ category.name }}</h2>

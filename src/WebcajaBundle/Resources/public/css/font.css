@@ -33,6 +33,7 @@
 
 body {
     padding-top: 80px;
+    background-color: #f6f6f6;
 }
 
 .category{
@@ -50,4 +51,31 @@ body {
 }
 .fenlei{
     color: #000;
+}
+
+
+
+.product{
+    padding-left: 4px;
+    padding-right: 4px;
+}
+.thumbnail {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-bottom: 30px;
+    border-radius: 0;
+}
+.thumbnail img {
+    max-width: 100%;
+    height: auto;
+}
+.thumbnail .caption {
+    padding: 4px;
+     overflow-y: hidden;
+     color: #555;
+ }
+.product h5{
+    float: left;
 }
