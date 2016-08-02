@@ -25,8 +25,8 @@
             <li>编号：<span id="codigo">{{ cartItem.product.code }}</span></li>
             <li>单价：<span id="price">{{ cartItem.product.price }}</span> €/件</li>
             <li>数量：<input class="text_box" name="" type="text" value="{{ cartItem.quantity }}" />包(箱)</li>
-            <input class="minnum" type="button" value="-"/>
-            <input class="addnum" type="button" value="+"/>
+            <input class="minnum" type="button" value="-" data-path="{{ path('webcaja_ajaxCarrito') }}"/>
+            <input class="addnum" type="button" value="+" data-path="{{ path('webcaja_ajaxCarrito') }}"/>
             <li>小计：<span id="heji"></span> €</li>
         </ul>
     {% endfor %}

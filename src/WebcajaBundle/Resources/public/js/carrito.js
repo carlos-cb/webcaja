@@ -7,9 +7,10 @@ $(function(){
         setTotal();
         var isAdd = 1;
         var cartItemId = parseInt($(this).parent().find('#id').text());
+        var path = $(this).attr("data-path");
         $.ajax({
             type: 'POST',
-            url: "/carrito/ajaxUpdate",
+            url: path,
             data: {val1: isAdd, val2: cartItemId},
             error: function(XMLHttpRequest, textStatus, errorThrown)
             {
