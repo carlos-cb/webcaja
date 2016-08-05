@@ -14,27 +14,39 @@
         </div>
     </nav>
 
-    <h1>web叫货系统</h1>
     <ul>
-        <li><a href="{{ path('webcaja_clearCarrito') }}">清空购物车</a></li>
-        <li><button class="jiezhang" href="#formorder">生成订单</button></li>
+        <li><a href="{{ path('webcaja_clearCarrito') }}" class="button button-border button-rounded button-primary">清空购物车</a></li>
+        <br>
+        <li><button class="button button-border button-rounded button-primary"><p>总价:<label id="total">0</label> €</p></button></li>
+        <br>
+        <li><button class="jiezhang button button-border button-rounded button-primary" href="#formorder">生成订单</button></li>
     </ul>
     <div id="shangpin">
     {% for cartItem in cartItems %}
+        <div class="row">
         <hr class="featurette-divider">
-        <ul>
-            <li style="display: none;">产品id：<span id="id">{{ cartItem.id }}</span></li>
-            <li>产品：<span id="name">{{ cartItem.product.name }}</span></li>
-            <li>单位：<span id="unit">{{ cartItem.product.unit }}</span>件/包(箱)</li>
-            <li>编号：<span id="codigo">{{ cartItem.product.code }}</span></li>
-            <li>单价：<span id="price">{{ cartItem.product.price }}</span> €/件</li>
-            <li>数量：<input class="text_box" name="" type="text" value="{{ cartItem.quantity }}" />包(箱)</li>
-            <input class="minnum" type="button" value="-" data-path="{{ path('webcaja_ajaxCarrito') }}"/>
-            <input class="addnum" type="button" value="+" data-path="{{ path('webcaja_ajaxCarrito') }}"/>
-            <li>小计：<span id="heji"></span> €</li>
-        </ul>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 cartimg">
+            <img src="{{ asset('uploads/fotos/' ~ cartItem.product.foto) }}" width="170">
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <h4>{{ cartItem.product.name }}</h4>
+            <h4>{{ cartItem.product.nameEs }}</h4>
+            <h4>{{ cartItem.product.code }}</h4>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 cartinfo">
+            <ul>
+                <li style="display: none;">产品id：<span id="id">{{ cartItem.id }}</span></li>
+                <li>单位：<span id="unit">{{ cartItem.product.unit }}</span>件/包(箱)</li>
+                <li>单价：<span id="price">{{ cartItem.product.price }}</span> €/件</li>
+                <li>数量：<input class="text_box" disabled="disabled" name="" type="text" style="width:40px;" value="{{ cartItem.quantity }}" />包(箱)</li>
+                <button class="minnum button button-primary button-box" data-path="{{ path('webcaja_ajaxCarrito') }}"><i class="fa fa-minus"></i></button>
+                <button class="addnum button button-primary button-box" data-path="{{ path('webcaja_ajaxCarrito') }}"><i class="fa fa-plus"></i></button>
+                <br>
+                <li>小计：<span id="heji"></span> €</li>
+            </ul>
+        </div>
+        </div>
     {% endfor %}
-        <p>总价:<label id="total">0</label> €</p>
     </div>
     <div style="display: none;" id="formorder">
         <form method="post" enctype="multipart/form-data" id="gform_10" action="{{ path('webcaja_carritoOrderinfo') }}">

@@ -81,3 +81,10 @@ body {
 .product h5{
     float: left;
 }
+
+.cartimg{
+    padding-left: 20px;
+}
+.cartinfo ul li{
+    margin-bottom:10px;
+}
