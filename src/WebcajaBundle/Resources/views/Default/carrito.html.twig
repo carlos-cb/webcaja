@@ -41,8 +41,7 @@
                 <li>数量：<input class="text_box" disabled="disabled" name="" type="text" style="width:40px;" value="{{ cartItem.quantity }}" />包(箱)</li>
                 <button class="minnum button button-primary button-box" data-path="{{ path('webcaja_ajaxCarrito') }}"><i class="fa fa-minus"></i></button>
                 <button class="addnum button button-primary button-box" data-path="{{ path('webcaja_ajaxCarrito') }}"><i class="fa fa-plus"></i></button>
-                <br>
-                <li>小计：<span id="heji"></span> €</li>
+                <li class="heji">小计：<span id="heji"></span> €</li>
             </ul>
         </div>
         </div>
@@ -52,38 +51,38 @@
         <form method="post" enctype="multipart/form-data" id="gform_10" action="{{ path('webcaja_carritoOrderinfo') }}">
             <div class="form-group">
                 <label>姓名</label>
-                <input name="name" id="input_10_1" class="medium" type="text" required="required">
+                <input name="name" id="input_10_1" class="medium form-control" type="text" required="required">
             </div>
             <div class="form-group">
                 <label>电话</label>
-                <input name="phonenumber" id="input_10_1" class="medium" type="text" required="required">
+                <input name="phonenumber" id="input_10_1" class="medium form-control" type="text" required="required">
             </div>
             <div class="form-group">
                 <label>省份</label>
-                <input name="province" id="input_10_1" class="medium" type="text" required="required">
+                <input name="province" id="input_10_1" class="medium form-control" type="text" required="required">
             </div>
             <div class="form-group">
                 <label>城市</label>
-                <input name="city" id="input_10_1" class="medium" type="text" required="required">
+                <input name="city" id="input_10_1" class="medium form-control" type="text" required="required">
             </div>
             <div class="form-group">
                 <label>地址</label>
-                <input name="address" id="input_10_1" class="medium" type="text" required="required">
+                <input name="address" id="input_10_1" class="medium form-control" type="text" required="required">
             </div>
             <div class="form-group">
                 <label>邮编</label>
-                <input name="postcode" id="input_10_1" class="medium" type="text" required="required">
+                <input name="postcode" id="input_10_1" class="medium form-control" type="text" required="required">
             </div>
             <div class="form-group">
                 <label>付款方式</label>
                 <div class="ginput_container ginput_container_select">
-                    <select name="paytype" id="input_10_6" class="medium gfield_select" required="required">
+                    <select name="paytype" id="input_10_6" class="medium gfield_select form-control" required="required">
                         <option value="货到付款">货到付款</option>
                         <option value="银行转账">银行转账</option>
                     </select>
                 </div>
             </div>
-            <input type="submit" value="保存">
+            <input type="submit" class="button button-pill button-primary" value="保存">
         </form>
     </div>
 

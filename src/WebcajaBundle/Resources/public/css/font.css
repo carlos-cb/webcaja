@@ -88,3 +88,14 @@ body {
 .cartinfo ul li{
     margin-bottom:10px;
 }
+.cartinfo ul .heji{
+    margin-top:10px;
+    font-size: 16px;
+}
+.cartinfo .addnum{
+    margin-left:15px;
+}
+
+#formorder{
+    width: 350px;
+}

@@ -57,25 +57,6 @@ $(function(){
     setTotal();
 })
 
-
- $(document).ready(function(){
-    $(".jiezhang").click(function(){
-        var ssd = 12;
-        var ggggg = $('#shangpin').find('ul');
-        var orderItems = new Array();
-        var total = parseFloat($("#total").text());
-        for(var k=0; k<ggggg.length; k++){
-            orderItems[k] = new Array();
-            orderItems[k]['name'] = $(ggggg[k]).find('#name').text();
-            orderItems[k]['codigo'] = $(ggggg[k]).find('#codigo').text();
-            orderItems[k]['unitprice'] = parseFloat($(ggggg[k]).find('#price').text());
-            orderItems[k]['unit'] = parseInt($(ggggg[k]).find('#unit').text());
-            orderItems[k]['quantity'] = parseInt($(ggggg[k]).find('.text_box').val());
-            orderItems[k]['heji'] = parseFloat($(ggggg[k]).find('#heji').text());
-        }
-    });
-});
-
 $(document).ready(function() {
     $(".jiezhang").fancybox({
         helpers : {
@@ -85,19 +66,6 @@ $(document).ready(function() {
                 }
             }
         }
-    });
-    $("a#product_image").fancybox({
-        helpers : {
-            overlay : {
-                css : {
-                    'background' : 'rgba(40, 33, 27, 0.3)'
-                }
-            }
-        },
-        'hideOnContentClick' :   false
-    });
-    $("body").click(function() {
-        $.fancybox.close();
     });
 });
 
