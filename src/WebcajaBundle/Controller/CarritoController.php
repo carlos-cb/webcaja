@@ -25,10 +25,10 @@ class CarritoController extends Controller
         
         $newCartItem = new CartItem();
         $newCartItem->setCart($cart)->setProduct($product)->setQuantity(1);
-        $cart->addCartItem($newCartItem);
-        
-        if($cart->hasCartItem($newCartItem)){
+
+        if(!$cart->hasCartItem($product)){
             $em = $this->getDoctrine()->getManager();
+            $cart->addCartItem($newCartItem);
             $em->persist($newCartItem);
             $em->flush();
         }
@@ -66,4 +66,5 @@ class CarritoController extends Controller
 
         return $this->redirectToRoute('webcaja_carrito');
     }
+
 }
