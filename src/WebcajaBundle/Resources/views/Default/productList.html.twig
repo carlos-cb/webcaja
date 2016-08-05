@@ -1,20 +1,26 @@
 {% extends 'font.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/webcaja/css/jquery.fancybox.css') }}" rel="stylesheet">
+{% endblock %}
 {% block body %}
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Carsun 订货系统</a>
+                <p onClick="javascript:history.back(-1);" class="navbar-left" ><i class="fa fa-arrow-left"></i>返回</p>
+                <a class="navbar-brand" href="{{ path('webcaja_homepage') }}">Carsun 订货系统</a>
             </div>
         </div>
     </nav>
-
 
     <div>
         {% for product in products %}
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 product">
             <div class="thumbnail">
-                <img src="{{ asset('uploads/fotos/' ~ product.foto) }}" data-src="{{ asset('uploads/fotos/' ~ product.foto) }}" width="300">
+                <a id="product_image" href="{{ asset('uploads/fotos/' ~ product.foto) }}">
+                    <img src="{{ asset('uploads/fotos/' ~ product.foto) }}" data-src="{{ asset('uploads/fotos/' ~ product.foto) }}" width="300">
+                </a>
                 <div class="caption">
                     <h5>
                         {{ product.name }} {{ product.nameEs }}<br>
@@ -31,3 +37,7 @@
         {% endfor %}
     </div>
 {% endblock %}
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('bundles/webcaja/js/jquery.fancybox.pack.js') }}"></script>
+    {% endblock %}

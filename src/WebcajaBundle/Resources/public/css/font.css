@@ -29,6 +29,8 @@
 .navbar-header a{
     font-size: 30px;
 }
+.navbar-header p{
+}
 .navbar-brand {float:none;}
 
 body {
