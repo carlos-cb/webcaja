@@ -14,7 +14,7 @@
         </div>
     </nav>
 
-    <div>
+    <div id="product">
         {% for product in products %}
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 product">
             <div class="thumbnail">
@@ -26,15 +26,26 @@
                         {{ product.name }} {{ product.nameEs }}<br>
                         <b>{{ product.unit }} u/c<br>{{ product.price }} €<br></b>
                     </h5>
-                    <span class="button-wrap">
+                    <p class="productId" style="display: none">{{ product.id }}</p>
+                    <span class="button-wrap nocart">
                         <button class="button button-circle button-raised button-primary" onclick="location.href='{{ path('webcaja_addToCarrito', {'id': product.id }) }}';">
                           <i class="fa fa-plus"></i>
                         </button>
-                      </span>
+                    </span>
+                    <span class="button-wrap yescart" style="display: none;">
+                        <button class="button button-circle button-action" onclick="alert('该商品已经在购物车中，请至购物车确认商品数量。')">
+                          <i class="fa fa-check"></i>
+                        </button>
+                    </span>
                 </div>
             </div>
         </div>
         {% endfor %}
+        <ul class="cartItems" style="display: block">
+            {% for cartItem in cartItems %}
+                <li class="cartItemId">{{ cartItem.product }}</li>
+            {% endfor %}
+        </ul>
     </div>
 {% endblock %}
     {% block javascripts %}

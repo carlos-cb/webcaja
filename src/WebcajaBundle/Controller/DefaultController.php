@@ -52,12 +52,15 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+        $cart = $this->getUser()->getCart();
+        $cartItems = $cart->getCartItems();
+
         $query = $em->createQuery("SELECT p FROM WebcajaBundle:Product p WHERE p.category=$id");
         $products = $query->getResult();
 
         return $this->render('WebcajaBundle:Default:productList.html.twig', array(
             'products' => $products,
+            'cartItems' => $cartItems,
         ));
     }
-
 }
