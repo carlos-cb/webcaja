@@ -28,7 +28,7 @@
                     </h5>
                     <p class="productId" style="display: none">{{ product.id }}</p>
                     <span class="button-wrap nocart">
-                        <button class="button button-circle button-raised button-primary" onclick="location.href='{{ path('webcaja_addToCarrito', {'id': product.id }) }}';">
+                        <button class="button button-circle button-raised button-primary" data-path="{{ path('webcaja_addtocartAjax') }}">
                           <i class="fa fa-plus"></i>
                         </button>
                     </span>
@@ -46,6 +46,9 @@
                 <li class="cartItemId">{{ cartItem.product }}</li>
             {% endfor %}
         </ul>
+        <div class="numselect" style="display: none">
+
+        </div>
     </div>
 {% endblock %}
     {% block javascripts %}

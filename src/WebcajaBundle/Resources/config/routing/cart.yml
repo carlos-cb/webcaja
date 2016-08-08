@@ -13,3 +13,7 @@ webcaja_clearCarrito:
 webcaja_ajaxCarrito:
     path:     /ajaxUpdate
     defaults: { _controller: "WebcajaBundle:Carrito:ajaxUpdate" }
+
+webcaja_addtocartAjax:
+    path:     /addtocartAjax
+    defaults: { _controller: "WebcajaBundle:Carrito:addtocartAjax" }
