@@ -27,11 +27,12 @@ $(function(){
         setHeji();
         setTotal();
         var isAdd = -1;
-        var productid = parseInt($(this).parent().find('#id').text());
+        var cartItemId = parseInt($(this).parent().find('#id').text());
+        var path = $(this).attr("data-path");
         $.ajax({
             type: 'POST',
-            url: "/carrito/ajaxUpdate",
-            data: {val1: isAdd, val2: productid},
+            url: path,
+            data: {val1: isAdd, val2: cartItemId},
             error: function(XMLHttpRequest, textStatus, errorThrown)
             {
                 alert('Error: ' +  errorThrown);

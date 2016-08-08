@@ -161,14 +161,13 @@ class Cart
      */
     public function getCartItem($productId)
     {
+        $i = 0;
         foreach ($this->cartItems as $cartItem){
             if($cartItem->getProduct()->getId() == $productId){
-                return $cartItem;
-                break;
-            }else{
-                return -1;
+                $i ++;
             }
         }
+        return $i;
     }
 
     public function hasCartItem(Product $product)
