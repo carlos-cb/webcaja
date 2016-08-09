@@ -59,6 +59,8 @@ body {
 
 
 .product{
+    margin-top: 10px;
+    margin-bottom: 30px;
     padding-left: 4px;
     padding-right: 4px;
 }

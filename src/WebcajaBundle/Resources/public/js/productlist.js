@@ -1,6 +1,7 @@
 
 $(document).ready(function() {
     $("a#product_image").fancybox({
+        closeClick: true,
         helpers : {
             overlay : {
                 css : {
@@ -10,18 +11,17 @@ $(document).ready(function() {
         },
         'hideOnContentClick' :   false
     });
-    $("body").click(function() {
+    $("button.numcheck").click(function(){
+        var productId = parseInt($(this).parent().find('p.productIdHidden').text());
+        $("div#product"+productId+"").find("span.nocart").toggle();
+        $("div#product"+productId+"").find("span.yescart").toggle();
         $.fancybox.close();
-    });
-    $("span.nocart").click(function(){
-        $(this).toggle();
-        $(this).parent().find("span.yescart").toggle();
-        var productId = parseInt($(this).parent().find('p.productId').text());
-        var path = $(this).find("button").attr("data-path");
+        var path = $(this).attr("data-path");
+        var num = $(this).parent().find("span#num").text();
         $.ajax({
             type: 'POST',
             url: path,
-            data: {num: '1', id: productId},
+            data: {num: num, id: productId},
             error: function(XMLHttpRequest, textStatus, errorThrown)
             {
                 alert('Error: ' +  errorThrown);
@@ -37,6 +37,38 @@ $(document).ready(function() {
                 $(ppn[n]).parent().find("span.yescart").toggle();
             }
         }
+    }
+    $('a.nocart').fancybox({
+
+    });
+
+    $("button.add").click(function(){
+        var t = $(this).parent().find('span#num');
+        t.text(parseInt(t.text())+1);
+        var s =
+            parseInt($(this).parent().find("span#unit").text())
+            * parseInt($(this).parent().find("span#num").text())
+            * parseFloat($(this).parent().find("span#price").text());
+        $(this).parent().find("span#heji").html(s.toFixed(2));
+    });
+    $("button.min").click(function(){
+        var t=$(this).parent().find('span#num');
+        t.text(parseInt(t.text())-1);
+        if(parseInt(t.text())<0){
+            t.text(0);
+        }
+        var s =
+            parseInt($(this).parent().find("span#unit").text())
+            * parseInt($(this).parent().find("span#num").text())
+            * parseFloat($(this).parent().find("span#price").text());
+        $(this).parent().find("span#heji").html(s.toFixed(2));
+    });
+    var numselect = $("div#product").find("div.numselect");
+    for(var i=0; i<numselect.length; i++){
+        var s = $(numselect[i]).find("span#unit").text()
+                * $(numselect[i]).find("span#num").text()
+                * $(numselect[i]).find("span#price").text();
+        $(numselect[i]).find("span#heji").html(s.toFixed(2));
     }
 });
 

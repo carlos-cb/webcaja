@@ -16,11 +16,11 @@
     </nav>
 
     <ul>
-        <li><a href="{{ path('webcaja_clearCarrito') }}" class="button button-border button-rounded button-primary">清空购物车</a></li>
+        <li><a href="{{ path('webcaja_clearCarrito') }}" class="button button-border button-rounded button-inverse" style="margin-top: 10px">清空购物车</a></li>
         <br>
-        <li><button class="button button-border button-rounded button-primary"><p>总价:<label id="total">0</label> €</p></button></li>
+        <li><button class="button button-border button-rounded button-inverse"><p>总价:<label id="total">0</label> €</p></button></li>
         <br>
-        <li><button class="jiezhang button button-border button-rounded button-primary" href="#formorder">生成订单</button></li>
+        <li><button class="jiezhang button button-border button-rounded button-inverse" href="#formorder">生成订单</button></li>
     </ul>
     <div id="shangpin">
     {% for cartItem in cartItems %}
@@ -40,8 +40,8 @@
                 <li>单位：<span id="unit">{{ cartItem.product.unit }}</span>件/包(箱)</li>
                 <li>单价：<span id="price">{{ cartItem.product.price }}</span> €/件</li>
                 <li>数量：<input class="text_box" disabled="disabled" name="" type="text" style="width:40px;" value="{{ cartItem.quantity }}" />包(箱)</li>
-                <button class="minnum button button-primary button-box" data-path="{{ path('webcaja_ajaxCarrito') }}"><i class="fa fa-minus"></i></button>
-                <button class="addnum button button-primary button-box" data-path="{{ path('webcaja_ajaxCarrito') }}"><i class="fa fa-plus"></i></button>
+                <button class="minnum button button-inverse button-box" data-path="{{ path('webcaja_ajaxCarrito') }}"><i class="fa fa-minus"></i></button>
+                <button class="addnum button button-inverse button-box" data-path="{{ path('webcaja_ajaxCarrito') }}"><i class="fa fa-plus"></i></button>
                 <li class="heji">小计：<span id="heji"></span> €</li>
             </ul>
         </div>

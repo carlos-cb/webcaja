@@ -16,39 +16,50 @@
 
     <div id="product">
         {% for product in products %}
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 product">
-            <div class="thumbnail">
-                <a id="product_image" href="{{ asset('uploads/fotos/' ~ product.foto) }}">
-                    <img src="{{ asset('uploads/fotos/' ~ product.foto) }}" data-src="{{ asset('uploads/fotos/' ~ product.foto) }}" width="300">
-                </a>
-                <div class="caption">
-                    <h5>
-                        {{ product.name }} {{ product.nameEs }}<br>
-                        <b>{{ product.unit }} u/c<br>{{ product.price }} €<br></b>
-                    </h5>
-                    <p class="productId" style="display: none">{{ product.id }}</p>
-                    <span class="button-wrap nocart">
-                        <button class="button button-circle button-raised button-primary" data-path="{{ path('webcaja_addtocartAjax') }}">
-                          <i class="fa fa-plus"></i>
-                        </button>
-                    </span>
-                    <span class="button-wrap yescart" style="display: none;">
-                        <button class="button button-circle button-action" onclick="alert('该商品已经在购物车中，请至购物车确认商品数量。')">
-                          <i class="fa fa-check"></i>
-                        </button>
-                    </span>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 product" id="product{{ product.id }}">
+                <div class="thumbnail">
+                    <a id="product_image" href="{{ asset('uploads/fotos/' ~ product.foto) }}">
+                        <img src="{{ asset('uploads/fotos/' ~ product.foto) }}" data-src="{{ asset('uploads/fotos/' ~ product.foto) }}" width="300">
+                    </a>
+                    <div class="caption">
+                        <h5>
+                            {{ product.name }} {{ product.nameEs }}<br>
+                            <b>{{ product.unit }} u/c<br>{{ product.price }} €<br></b>
+                        </h5>
+                        <p class="productId" style="display: none">{{ product.id }}</p>
+                        <span class="button-wrap nocart">
+                            <a class="button button-circle button-raised button-primary nocart" href="#numselect{{ product.id }}">
+                              <i class="fa fa-plus"></i>
+                            </a>
+                        </span>
+                        <span class="button-wrap yescart" style="display: none;">
+                            <a class="button button-circle button-action" onclick="alert('该商品已经在购物车中，请至购物车确认商品数量。')">
+                              <i class="fa fa-check"></i>
+                            </a>
+                        </span>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="numselect" id="numselect{{ product.id }}" style="display: none">
+                <p class="productIdHidden" style="display: none">{{ product.id }}</p>
+                <button class="min button button-inverse button-box"><i class="fa fa-minus"></i></button>
+                <button class="add button button-inverse button-box"><i class="fa fa-plus"></i></button>
+                <p class="heji">
+                    小计：<span id="num">1</span>
+                    x <span id="unit">{{ product.unit }}</span>
+                    x <span id="price">{{ product.price }}</span>€
+                    = <span id="heji"></span> €
+                </p>
+                <button class="button button-circle button-raised button-primary numcheck" data-path="{{ path('webcaja_addtocartAjax') }}">
+                    <i class="fa fa-check"></i>
+                </button>
+            </div>
         {% endfor %}
-        <ul class="cartItems" style="display: block">
+        <ul class="cartItems" style="display: none">
             {% for cartItem in cartItems %}
                 <li class="cartItemId">{{ cartItem.product }}</li>
             {% endfor %}
         </ul>
-        <div class="numselect" style="display: none">
-
-        </div>
     </div>
 {% endblock %}
     {% block javascripts %}
