@@ -15,7 +15,6 @@ class User extends BaseUser
      */
     protected $id;
 
-
     /**
      * Get id
      *
