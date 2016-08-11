@@ -45,9 +45,13 @@ class OrderController extends Controller
             $cart->setCartState('over');
 
             $em->flush();
-
+        }else{
+            return $this->redirectToRoute('webcaja_carrito');
         }
-        return $this->redirectToRoute('webcaja_carrito');
+
+        return $this->render('WebcajaBundle:Default:carritoOrderinfo.html.twig', array(
+            'orderInfo' => $orderInfo,
+        ));
     }
     
     private function itemToOrder(OrderInfo $orderInfo)
