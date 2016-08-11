@@ -54,8 +54,8 @@ $(document).ready(function() {
     $("button.min").click(function(){
         var t=$(this).parent().find('span#num');
         t.text(parseInt(t.text())-1);
-        if(parseInt(t.text())<0){
-            t.text(0);
+        if(parseInt(t.text())<1){
+            t.text(1);
         }
         var s =
             parseInt($(this).parent().find("span#unit").text())
