@@ -31,4 +31,4 @@ security:
         - { path: ^/admin/, role: ROLE_SUPER_ADMIN }
         - { path: ^/$, role: ROLE_USER }
         - { path: ^/carrito$, role: ROLE_USER }
-        - { path: ^/categoryList$, role: ROLE_USER }
+        - { path: ^/categoryList^, role: ROLE_USER }

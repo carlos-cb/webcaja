@@ -40,3 +40,7 @@
         </div>
     </div>
 {% endblock %}
+        {% block javascripts %}
+            {{ parent() }}
+            <script src="{{ asset('bundles/webcaja/js/search.js') }}"></script>
+        {% endblock %}
