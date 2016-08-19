@@ -15,12 +15,12 @@
         </div>
     </nav>
 
-    <ul>
-        <li><a href="{{ path('webcaja_clearCarrito') }}" class="button button-border button-rounded button-inverse" style="margin-top: 10px">清空购物车</a></li>
+    <ul class="anniuzu">
+        <li><a href="{{ path('webcaja_clearCarrito') }}" class="button button-border button-rounded button-inverse button-large" style="margin-top: 10px">清空购物车</a></li>
         <br>
-        <li><button class="button button-border button-rounded button-inverse"><p>总价:<label id="total">0</label> €</p></button></li>
+        <li><button class="button button-border button-rounded button-inverse button-large"><p>总价:<label id="total">0</label> €</p></button></li>
         <br>
-        <li><button class="jiezhang button button-border button-rounded button-inverse" href="#formorder">生成订单</button></li>
+        <li><button class="jiezhang button button-border button-rounded button-inverse button-large" href="#formorder">生成订单</button></li>
     </ul>
     <div id="shangpin" style="padding-bottom: 80px;">
     {% for cartItem in cartItems %}
@@ -33,6 +33,7 @@
             <h4>{{ cartItem.product.name }}</h4>
             <h4>{{ cartItem.product.nameEs }}</h4>
             <h4>{{ cartItem.product.code }}</h4>
+            <a class="button button-plain button-border button-box button-inverse" href="{{ path('delete_item', { 'id': cartItem.id }) }}"><i class="fa fa-trash-o"></i></a>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 cartinfo">
             <ul>
@@ -52,38 +53,38 @@
         <form method="post" enctype="multipart/form-data" id="gform_10" name="orderinfo" action="{{ path('webcaja_carritoOrderinfo') }}">
             <div class="form-group">
                 <label>姓名</label>
-                <input name="name" id="input_10_1" class="medium form-control" type="text" required="required">
+                <input name="name" id="input_10_1" class="medium form-control" type="text" required="required" style="height: 45px;">
             </div>
             <div class="form-group">
                 <label>电话</label>
-                <input name="phonenumber" id="input_10_1" class="medium form-control" type="text" required="required">
+                <input name="phonenumber" id="input_10_1" class="medium form-control" type="text" required="required" style="height: 45px;">
             </div>
             <div class="form-group">
                 <label>省份</label>
-                <input name="province" id="input_10_1" class="medium form-control" type="text" required="required">
+                <input name="province" id="input_10_1" class="medium form-control" type="text" required="required" style="height: 45px;">
             </div>
             <div class="form-group">
                 <label>城市</label>
-                <input name="city" id="input_10_1" class="medium form-control" type="text" required="required">
+                <input name="city" id="input_10_1" class="medium form-control" type="text" required="required" style="height: 45px;">
             </div>
             <div class="form-group">
                 <label>地址</label>
-                <input name="address" id="input_10_1" class="medium form-control" type="text" required="required">
+                <input name="address" id="input_10_1" class="medium form-control" type="text" required="required" style="height: 45px;">
             </div>
             <div class="form-group">
                 <label>邮编</label>
-                <input name="postcode" id="input_10_1" class="medium form-control" type="text" required="required">
+                <input name="postcode" id="input_10_1" class="medium form-control" type="text" required="required" style="height: 45px;">
             </div>
             <div class="form-group">
                 <label>付款方式</label>
                 <div class="ginput_container ginput_container_select">
-                    <select name="paytype" id="input_10_6" class="medium gfield_select form-control" required="required">
+                    <select name="paytype" id="input_10_6" class="medium gfield_select form-control" required="required" style="height: 45px;">
                         <option value="货到付款">货到付款</option>
                         <option value="银行转账">银行转账</option>
                     </select>
                 </div>
             </div>
-            <input type="submit" class="button button-pill button-primary" value="保存" onclick="return checkform()">
+            <input type="submit" class="button button-pill button-primary" value="保存" onclick="return checkform()" style="height: 45px;">
         </form>
     </div>
 

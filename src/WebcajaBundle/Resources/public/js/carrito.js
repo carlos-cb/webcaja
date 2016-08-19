@@ -17,28 +17,29 @@ $(function(){
                 alert('Error: ' +  errorThrown);
             }
         });
-    })
+    });
     $(".minnum").click(function(){
         var t=$(this).parent().find('input[class*=text_box]');
         t.val(parseInt(t.val())-1)
-        if(parseInt(t.val())<0){
-            t.val(0);
+        if(parseInt(t.val())<1){
+            t.val(1);
+        }else{
+            var isAdd = -1;
+            var cartItemId = parseInt($(this).parent().find('#id').text());
+            var path = $(this).attr("data-path");
+            $.ajax({
+                type: 'POST',
+                url: path,
+                data: {val1: isAdd, val2: cartItemId},
+                error: function(XMLHttpRequest, textStatus, errorThrown)
+                {
+                    alert('Error: ' +  errorThrown);
+                }
+            });
         }
         setHeji();
         setTotal();
-        var isAdd = -1;
-        var cartItemId = parseInt($(this).parent().find('#id').text());
-        var path = $(this).attr("data-path");
-        $.ajax({
-            type: 'POST',
-            url: path,
-            data: {val1: isAdd, val2: cartItemId},
-            error: function(XMLHttpRequest, textStatus, errorThrown)
-            {
-                alert('Error: ' +  errorThrown);
-            }
-        });
-    })
+    });
     function setHeji(){
         var ff = $('#shangpin').find('ul');
         for(var j=0; j<ff.length; j++){
@@ -56,13 +57,14 @@ $(function(){
     }
     setHeji();
     setTotal();
-})
+});
 
 $(document).ready(function() {
     $(".jiezhang").click(function(){
         var total = parseFloat($("#total").text());
-        if(total>=300){
+        if(total>=-1){
             $(this).fancybox({
+                fitToView: true,
                 helpers : {
                     overlay : {
                         css : {

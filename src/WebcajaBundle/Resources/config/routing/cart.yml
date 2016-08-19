@@ -17,3 +17,7 @@ webcaja_ajaxCarrito:
 webcaja_addtocartAjax:
     path:     /addtocartAjax
     defaults: { _controller: "WebcajaBundle:Carrito:addtocartAjax" }
+
+delete_item:
+    path:     /deleteItem/{id}
+    defaults: { _controller: "WebcajaBundle:Carrito:deleteitem" }

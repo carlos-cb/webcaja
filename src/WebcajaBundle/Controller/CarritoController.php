@@ -92,4 +92,16 @@ class CarritoController extends Controller
         return new Response();
     }
 
+    public function deleteitemAction(CartItem $cartItem)
+    {
+        $cart = $this->getUser()->getCart();
+        
+        $cart->removeCartItem($cartItem);
+            
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($cartItem);
+        $em->flush();
+
+        return $this->redirectToRoute('webcaja_carrito');
+    }
 }
