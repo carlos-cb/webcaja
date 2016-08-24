@@ -6,6 +6,10 @@ webcaja_homepage:
     path:     /
     defaults: { _controller: WebcajaBundle:Default:index }
 
+webcaja_info:
+    path:     /info
+    defaults: { _controller: WebcajaBundle:Default:info }
+
 webcaja_product:
     resource: "@WebcajaBundle/Resources/config/routing/product.yml"
     prefix:   /admin/product

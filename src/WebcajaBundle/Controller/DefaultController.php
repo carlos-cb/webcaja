@@ -63,4 +63,9 @@ class DefaultController extends Controller
             'cartItems' => $cartItems,
         ));
     }
+
+    public function infoAction()
+    {
+        return $this->render('WebcajaBundle:Default:info.html.twig');
+    }
 }

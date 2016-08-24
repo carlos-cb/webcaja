@@ -1,22 +1,26 @@
 {% extends 'font.html.twig' %}
 
 {% block body %}
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{{ path('webcaja_homepage') }}">Carsun 订货系统</a>
+                 <a class="navbar-brand" href="{{ path('webcaja_homepage') }}">鸿跃Carsun 订货系统</a>
             </div>
         </div>
     </nav>
 
-    <h1>web叫货系统</h1>
+    <div class="infouser">
+        <img src="{{ asset('uploads/fotos/info1.jpg') }}" style="width: 100%">
+        <h2>退货担保</h2>
+        <p>以下原因可100%无条件退换货：</p>
+    </div>
 
     <nav class="navbar navbar-inverse navbar-fixed-bottom">
         <div class="container navbuttom">
             <ul class="nav navbar-nav">
                 <li><a href="{{ path('webcaja_homepage') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span><br>首页</a></li>
                 <li><a href="{{ path('webcaja_categoryList') }}"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span><br>选购</a></li>
-                <li class="active"><a href="{{ path('webcaja_homepage') }}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><br>搜索</a></li>
+                <li class="active"><a href="{{ path('webcaja_info') }}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><br>用户须知</a></li>
                 <li><a href="{{ path('webcaja_carrito') }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><br>购物车</a></li>
             </ul>
         </div>
