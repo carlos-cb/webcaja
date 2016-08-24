@@ -62,20 +62,18 @@ $(function(){
 $(document).ready(function() {
     $(".jiezhang").click(function(){
         var total = parseFloat($("#total").text());
-        if(total>=-1){
             $(this).fancybox({
                 fitToView: true,
                 helpers : {
                     overlay : {
                         css : {
                             'background' : 'rgba(40, 33, 27, 0.3)'
-                        }
+                        },
+                        closeClick: false
                     }
                 }
             });
-        }else{
-            alert("每批次货物起订价格需达到300欧元，请继续选购。");
-        }
+
     });
 });
 

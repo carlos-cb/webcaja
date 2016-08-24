@@ -18,8 +18,6 @@ class OrderController extends Controller
             $orderInfo->setUser($this->getUser())
                 ->setOrderDate(new \DateTime('now'))
                 ->setGoodsFee($priceAll)
-                ->setTotalPrice($priceAll)
-                ->setShipFee(0)
                 ->setPayType($request->get('paytype'))
                 ->setReceiverName($request->get('name'))
                 ->setReceiverPhone($request->get('phonenumber'))
@@ -31,6 +29,11 @@ class OrderController extends Controller
                 ->setIsSended(false)
                 ->setIsOver(false)
                 ->setState("运行中");
+            if($priceAll>=300){
+                $orderInfo->setShipFee(0)->setTotalPrice($priceAll);
+            }else{
+                $orderInfo->setShipFee(10)->setTotalPrice($priceAll+10);
+            }
             $em = $this->getDoctrine()->getManager();
             $em->persist($orderInfo);
             $em->flush();

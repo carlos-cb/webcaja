@@ -9,7 +9,7 @@
         </div>
     </nav>
 <div class="container">
-    <h3>订单：{{ orderInfo.id }} 已经创建完成！ 请等待发货。 <br>请再次确认订单详情。<br>如有疑问，请咨询电话：686058160<br>
+    <h3>订单：{{ orderInfo.id }} 已经创建完成！ 请等待发货。 <br>请再次确认订单详情。<br>如有疑问，请咨询电话：653855071<br>
         <span style="color: #ff1f30">选择银行转账付款方式的客户请将货款打入账户:<br>
             ESXX XXXX XXXX XXXX</span></h3>
     <br>
@@ -25,15 +25,15 @@
         </tr>
         <tr>
             <th>商品总价</th>
-            <td>{{ orderInfo.goodsFee }}</td>
-        </tr>
-        <tr>
-            <th>订单总价</th>
-            <td>{{ orderInfo.totalPrice }}</td>
+            <td>{{ orderInfo.goodsFee }} 欧元</td>
         </tr>
         <tr>
             <th>运费</th>
-            <td>{{ orderInfo.shipFee }}</td>
+            <td>{{ orderInfo.shipFee }} 欧元</td>
+        </tr>
+        <tr>
+            <th>订单总价</th>
+            <td>{{ orderInfo.totalPrice }} 欧元</td>
         </tr>
         <tr>
             <th>付款方式</th>
@@ -65,11 +65,11 @@
         </tr>
         <tr>
             <th>订单已确认</th>
-            <td>{% if orderInfo.isConfirmed %}Yes{% else %}No{% endif %}</td>
+            <td>{% if orderInfo.isConfirmed %}是{% else %}否{% endif %}</td>
         </tr>
         <tr>
             <th>订单已发货</th>
-            <td>{% if orderInfo.isSended %}Yes{% else %}No{% endif %}</td>
+            <td>{% if orderInfo.isSended %}是{% else %}否{% endif %}</td>
         </tr>
         </tbody>
     </table>
