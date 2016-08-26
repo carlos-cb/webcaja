@@ -12,12 +12,20 @@ class OrderController extends Controller
     public function carritoOrderinfoAction(Request $request)
     {
         $priceAll = $this->countAll();
+        if($priceAll>=500){
+            $priceAll= $priceAll*0.95;
+        }
+        if($request->get('paytype')=='银行转账'){
+            $priceAll= $priceAll*0.98;
+        }
         //根据用户填写的表格新建订单
         if($request->getMethod() == 'POST'){
             $orderInfo = new OrderInfo();
             $orderInfo->setUser($this->getUser())
                 ->setOrderDate(new \DateTime('now'))
                 ->setGoodsFee($priceAll)
+                ->setShipFee(0)
+                ->setTotalPrice($priceAll)
                 ->setPayType($request->get('paytype'))
                 ->setReceiverName($request->get('name'))
                 ->setReceiverPhone($request->get('phonenumber'))
@@ -29,11 +37,6 @@ class OrderController extends Controller
                 ->setIsSended(false)
                 ->setIsOver(false)
                 ->setState("运行中");
-            if($priceAll>=300){
-                $orderInfo->setShipFee(0)->setTotalPrice($priceAll);
-            }else{
-                $orderInfo->setShipFee(10)->setTotalPrice($priceAll+10);
-            }
             $em = $this->getDoctrine()->getManager();
             $em->persist($orderInfo);
             $em->flush();
