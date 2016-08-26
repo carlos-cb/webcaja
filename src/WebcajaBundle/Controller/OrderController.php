@@ -12,18 +12,16 @@ class OrderController extends Controller
     public function carritoOrderinfoAction(Request $request)
     {
         $priceAll = $this->countAll();
-        if($priceAll>=500){
-            $priceAll= $priceAll*0.95;
-        }
+        $priceIni = $priceAll;
         if($request->get('paytype')=='银行转账'){
-            $priceAll= $priceAll*0.98;
+            $priceAll= round($priceAll*0.98, 2);
         }
         //根据用户填写的表格新建订单
         if($request->getMethod() == 'POST'){
             $orderInfo = new OrderInfo();
             $orderInfo->setUser($this->getUser())
                 ->setOrderDate(new \DateTime('now'))
-                ->setGoodsFee($priceAll)
+                ->setGoodsFee($priceIni)
                 ->setShipFee(0)
                 ->setTotalPrice($priceAll)
                 ->setPayType($request->get('paytype'))
