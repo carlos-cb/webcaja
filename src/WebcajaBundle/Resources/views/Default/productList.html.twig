@@ -40,23 +40,23 @@
                     </div>
                 </div>
             </div>
-            <div class="numselect" id="numselect{{ product.id }}" style="display: none">
+            <div class="numselect" id="numselect{{ product.id }}" style="display: none; text-align: center;">
                 <br><br>
                 <p class="productIdHidden" style="display: none">{{ product.id }}</p>
-                <button class="min button button-inverse button-box button-jumbo" style="margin-right: 40px"><i class="fa fa-minus"></i></button>
-                <button class="add button button-inverse button-box button-jumbo"><i class="fa fa-plus"></i></button>
-                <br><br><br>
-                <p class="heji">
+                <button class="min button button-inverse button-box button-giant button-3d" style="margin-right: 40px"><i class="fa fa-minus"></i></button>
+                <button class="add button button-inverse button-box button-giant button-3d"><i class="fa fa-plus"></i></button>
+                <br><br><br><br>
+                <h4 class="heji">
                     小计：<span id="num">1</span>
                     x <span id="unit">{{ product.unit }}</span>
                     x <span id="price">{{ product.price }}</span> €
                     = <span id="heji"></span> €
-                </p>
+                </h4>
                 <br>
-                <button class="button button-circle button-raised button-primary numcheck" data-path="{{ path('webcaja_addtocartAjax') }}">
+                <button class="button button-circle button-raised button-primary numcheck button-jumbo button-3d" data-path="{{ path('webcaja_addtocartAjax') }}">
                     <i class="fa fa-check"></i>
                 </button>
-                <br>
+                <br><br>
             </div>
         {% endfor %}
         <ul class="cartItems" style="display: none">

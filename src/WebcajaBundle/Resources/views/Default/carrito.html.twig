@@ -14,14 +14,15 @@
             </div>
         </div>
     </nav>
-
-    <ul class="anniuzu">
-        <li><a href="{{ path('webcaja_clearCarrito') }}" class="button button-border button-rounded button-inverse button-large" style="margin-top: 10px">清空购物车</a></li>
-        <br>
-        <li><button class="button button-border button-rounded button-inverse button-large"><p>总价:<label id="total">0</label> €</p></button></li>
-        <br>
-        <li><button class="jiezhang button button-border button-rounded button-inverse button-large" href="#formorder">生成订单</button></li>
-    </ul>
+    <div class="anniu">
+        <ul class="anniuzu">
+            <li><a href="{{ path('webcaja_clearCarrito') }}" class="button button-border button-rounded button-inverse button-large" style="margin-top: 10px">清空购物车</a></li>
+            <br>
+            <li><button class="button button-border button-rounded button-inverse button-large"><p>总价:<label id="total">0</label> €</p></button></li>
+            <br>
+            <li><button class="jiezhang button button-border button-rounded button-inverse button-large" href="#formorder">生成订单</button></li>
+        </ul>
+    </div>
     <div id="shangpin" style="padding-bottom: 80px;">
     {% for cartItem in cartItems %}
         <div class="row">
@@ -41,8 +42,8 @@
                 <li>单位：<span id="unit">{{ cartItem.product.unit }}</span>件/包(箱)</li>
                 <li>单价：<span id="price">{{ cartItem.product.price }}</span> €/件</li>
                 <li>数量：<input class="text_box" disabled="disabled" name="" type="text" style="width:40px;" value="{{ cartItem.quantity }}" />包(箱)</li>
-                <button class="minnum button button-inverse button-box" data-path="{{ path('webcaja_ajaxCarrito') }}"><i class="fa fa-minus"></i></button>
-                <button class="addnum button button-inverse button-box" data-path="{{ path('webcaja_ajaxCarrito') }}"><i class="fa fa-plus"></i></button>
+                <button class="minnum button button-inverse button-box button-3d" data-path="{{ path('webcaja_ajaxCarrito') }}"><i class="fa fa-minus"></i></button>
+                <button class="addnum button button-inverse button-box button-3d" data-path="{{ path('webcaja_ajaxCarrito') }}"><i class="fa fa-plus"></i></button>
                 <li class="heji">小计：<span id="heji"></span> €</li>
             </ul>
         </div>
@@ -80,12 +81,12 @@
                 <div class="ginput_container ginput_container_select">
                     <select name="paytype" id="input_10_6" class="medium gfield_select form-control" required="required" style="height: 45px;">
                         <option value="货到付款">货到付款</option>
-                        <option value="银行转账">银行转账</option>
+                            <option value="银行转账">银行转账</option>
                     </select>
                 </div>
             </div>
             <p>*普通买家付款方式为先付款后发货，享受2%的折扣。货到付款的订单不享受折扣。</p>
-            <input type="submit" class="button button-pill button-primary" value="保存" onclick="return checkform()" style="height: 45px;">
+            <input type="submit" class="button button-pill button-primary button-3d" value="保存" onclick="return checkform()" style="height: 45px;">
         </form>
     </div>
 
