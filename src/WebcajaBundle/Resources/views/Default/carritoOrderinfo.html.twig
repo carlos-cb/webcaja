@@ -66,6 +66,10 @@
             <td>{{ orderInfo.receiverPostcode }}</td>
         </tr>
         <tr>
+            <th>公司税号</th>
+            <td>{{ orderInfo.receiverShuihao }}</td>
+        </tr>
+        <tr>
             <th>订单已确认</th>
             <td>{% if orderInfo.isConfirmed %}是{% else %}否{% endif %}</td>
         </tr>
@@ -83,4 +87,7 @@
             </ul>
         </div>
     </nav>
+    <script>
+        window.onbeforeunload = function(event) { return confirm("确定离开此页面吗？"); }
+    </script>
 {% endblock %}

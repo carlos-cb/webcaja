@@ -13,10 +13,12 @@ class CarritoController extends Controller
     public function carritoAction()
     {
         $cart = $this->getUser()->getCart();
+        $data = $this->getUser()->getData();
         $cartItems = $cart->getCartItems();
 
         return $this->render('WebcajaBundle:Default:carrito.html.twig', array(
             'cartItems' => $cartItems,
+            'data' => $data,
         ));
     }
 

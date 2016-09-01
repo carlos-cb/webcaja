@@ -12,6 +12,9 @@ WebcajaBundle\Entity\User:
         cart:
             targetEntity: Cart
             mappedBy: user
+        data:
+            targetEntity: Data
+            mappedBy: user
     oneToMany:
         orderInfos:
             targetEntity: OrderInfo

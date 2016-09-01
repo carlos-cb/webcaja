@@ -26,6 +26,7 @@ class OrderInfoType extends AbstractType
             ->add('receiverCity')
             ->add('receiverProvince')
             ->add('receiverPostcode')
+            ->add('shuihao')
             ->add('isConfirmed')
             ->add('isSended')
             ->add('isOver')

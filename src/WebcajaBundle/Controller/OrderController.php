@@ -4,6 +4,7 @@ namespace WebcajaBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use WebcajaBundle\Entity\Data;
 use WebcajaBundle\Entity\OrderInfo;
 use WebcajaBundle\Entity\OrderItem;
 
@@ -17,7 +18,8 @@ class OrderController extends Controller
             $priceAll= round($priceAll*0.98, 2);
         }
         //根据用户填写的表格新建订单
-        if($request->getMethod() == 'POST'){
+        if($request->getMethod() == 'POST' && ($priceAll!=0) ){
+            //订单信息录入
             $orderInfo = new OrderInfo();
             $orderInfo->setUser($this->getUser())
                 ->setOrderDate(new \DateTime('now'))
@@ -31,11 +33,41 @@ class OrderController extends Controller
                 ->setReceiverCity($request->get('city'))
                 ->setReceiverProvince($request->get('province'))
                 ->setReceiverPostcode($request->get('postcode'))
+                ->setReceiverShuihao($request->get('shuihao'))
                 ->setIsConfirmed(true)
                 ->setIsSended(false)
                 ->setIsOver(false)
                 ->setState("运行中");
+
+            //用户信息录入
+            $repository = $this->getDoctrine()->getRepository('WebcajaBundle:Data');
+            $existeData = $repository->findOneByUser($this->getUser());
+
             $em = $this->getDoctrine()->getManager();
+
+            if($existeData){
+                $existeData
+                    ->setReceivername($request->get('name'))
+                    ->setReceiverphone($request->get('phonenumber'))
+                    ->setReceiveradress($request->get('address'))
+                    ->setReceivercity($request->get('city'))
+                    ->setReceiverprovince($request->get('province'))
+                    ->setReceiverpostcode($request->get('postcode'))
+                    ->setReceivershuihao($request->get('shuihao'));
+                $em->persist($existeData);
+            }else{
+                $data = new Data();
+                $data->setUser($this->getUser())
+                    ->setReceivername($request->get('name'))
+                    ->setReceiverphone($request->get('phonenumber'))
+                    ->setReceiveradress($request->get('address'))
+                    ->setReceivercity($request->get('city'))
+                    ->setReceiverprovince($request->get('province'))
+                    ->setReceiverpostcode($request->get('postcode'))
+                    ->setReceivershuihao($request->get('shuihao'));
+                $em->persist($data);
+            }
+
             $em->persist($orderInfo);
             $em->flush();
 

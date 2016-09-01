@@ -68,6 +68,10 @@
                 <td>{{ orderInfo.receiverPostcode }}</td>
             </tr>
             <tr>
+                <th>公司税号</th>
+                <td>{{ orderInfo.receiverShuihao }}</td>
+            </tr>
+            <tr>
                 <th>订单已确认</th>
                 <td>{% if orderInfo.isConfirmed %}Yes{% else %}No{% endif %}</td>
             </tr>

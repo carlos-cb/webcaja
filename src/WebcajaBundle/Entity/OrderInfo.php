@@ -521,4 +521,32 @@ class OrderInfo
     {
         return $this->user;
     }
+    /**
+     * @var string
+     */
+    private $receiverShuihao;
+
+
+    /**
+     * Set receiverShuihao
+     *
+     * @param string $receiverShuihao
+     * @return OrderInfo
+     */
+    public function setReceiverShuihao($receiverShuihao)
+    {
+        $this->receiverShuihao = $receiverShuihao;
+
+        return $this;
+    }
+
+    /**
+     * Get receiverShuihao
+     *
+     * @return string 
+     */
+    public function getReceiverShuihao()
+    {
+        return $this->receiverShuihao;
+    }
 }

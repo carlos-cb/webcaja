@@ -38,6 +38,9 @@ WebcajaBundle\Entity\OrderInfo:
         receiverPostcode:
             type: string
             length: 255
+        receiverShuihao:
+            type: string
+            length: 255
         isConfirmed:
             type: boolean
         isSended:

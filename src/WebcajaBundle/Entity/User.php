@@ -14,7 +14,7 @@ class User extends BaseUser
      * @var int
      */
     protected $id;
-
+    
     /**
      * Get id
      *
@@ -40,6 +40,11 @@ class User extends BaseUser
      * @var \WebcajaBundle\Entity\Cart
      */
     private $cart;
+
+    /**
+     * @var \WebcajaBundle\Entity\Data
+     */
+    private $data;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -101,5 +106,28 @@ class User extends BaseUser
     public function getOrderInfos()
     {
         return $this->orderInfos;
+    }
+
+    /**
+     * Set data
+     *
+     * @param \WebcajaBundle\Entity\Data $data
+     * @return User
+     */
+    public function setData(\WebcajaBundle\Entity\Data $data = null)
+    {
+        $this->data = $data;
+
+        return $this;
+    }
+
+    /**
+     * Get data
+     *
+     * @return \WebcajaBundle\Entity\Data 
+     */
+    public function getData()
+    {
+        return $this->data;
     }
 }
